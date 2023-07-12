@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sertan/city_and_district_list.dart';
 
 class CityDistrictProvider with ChangeNotifier {
   String _selectedCity = "No city choosen";
@@ -11,14 +12,18 @@ class CityDistrictProvider with ChangeNotifier {
 
   set setSelectedCity(String city) {
     _selectedCity = city;
-    _selectedDistrict = "";
-    _isCitySelected = false;
+    if (_selectedCity == cities[0]) {
+      _isCitySelected = false;
+    } else {
+      _isCitySelected = true;
+    }
+
     notifyListeners();
   }
 
   set setSelectedDistrict(String district) {
     _selectedDistrict = district;
-    _isCitySelected = true;
+
     notifyListeners();
   }
 }

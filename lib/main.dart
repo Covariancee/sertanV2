@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sertan/pages/login_page.dart';
 import 'package:provider/provider.dart';
-import 'package:sertan/pages/register_page.dart';
 import 'package:sertan/provider/city_and_district_provider.dart';
 import 'package:sertan/provider/function_provider.dart';
 
@@ -28,7 +27,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      home: RegisterPageView(),
+      theme: ThemeData.dark(),
+      home: LoginPageView(),
     );
   }
 }

@@ -15,47 +15,105 @@ class RegisterPageView extends StatefulWidget {
 }
 
 class _RegisterPageViewState extends State<RegisterPageView> {
+  TextEditingController nameSurnameController = TextEditingController();
+  TextEditingController phoneRegisterController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordRegisterController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     final cityProvider = Provider.of<CityDistrictProvider>(context);
-    final functionProvider = Provider.of<FunctionProvider>(context);
+    //final functionProvider = Provider.of<FunctionProvider>(context);
+    bool visible = cityProvider.isCitySelected;
 
     return Scaffold(
-      body: ListView(children: [
-        Form(
+      body: Container(
+        decoration: const BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage("assets/vtz_background.png"),
+                fit: BoxFit.cover)),
+        child: Form(
           key: widget._formKey,
-          child: Column(children: [
-            RegisterInput(
-              inputText: 'Name',
-            ),
-            RegisterInput(
-              inputText: 'Surname',
-            ),
-            RegisterInput(
-              inputText: 'Phone Number',
-            ),
-            RegisterInput(
-              inputText: 'Email',
-            ),
-            RegisterInput(
-              inputText: 'Password',
-            ),
-            CupertinoButton(
-                onPressed:  () =>
-                    FunctionProvider(context: context).showPicker(),
-                child: Text(cityProvider.selectedCity)),
-            CupertinoButton(
-                child: Text(cityProvider.selectedDistrict), onPressed: () {}),
-            ElevatedButton(onPressed: () {}, child: const Text("Register")),
-            TextButton(
-                onPressed: () async{
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => LoginPageView()));
-                },
-                child: const Text("Login"))
-          ]),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 32),
+            child:
+                Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+              SizedBox(width: 250, child: Image.asset("assets/vtz_logo.png")),
+              NameSurnameInput(
+                inputText: 'Name',
+                controller: nameSurnameController,
+              ),
+              NameSurnameInput(
+                inputText: 'Surname',
+                controller: nameSurnameController,
+              ),
+              PhoneInput(
+                controller: phoneRegisterController,
+              ),
+              EmailInput(controller: emailController),
+              PasswordInput(controller: passwordRegisterController),
+              Padding(
+                padding: const EdgeInsets.only(top: 24),
+                child: CupertinoButton(
+                  padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
+                  borderRadius: BorderRadius.circular(8.0),
+                  color: Colors.blue,
+                  onPressed: () =>
+                      FunctionProvider(context: context).showPicker(),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        textAlign: TextAlign.start,
+                        cityProvider.selectedCity,
+                        style: const TextStyle(color: Colors.white),
+                      ),
+                      const Icon(
+                        Icons.keyboard_arrow_down,
+                        color: Colors.white,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              const SizedBox(height: 24),
+              Visibility(
+                visible: visible,
+                child: CupertinoButton(
+                  
+                  
+                  padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+                  color: Colors.blue,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        cityProvider.selectedDistrict,
+                        style: const TextStyle(color: Colors.white),
+                      ),
+                      Icon(Icons.keyboard_arrow_down)
+                    ],
+                  ),
+                  onPressed: () =>
+                      FunctionProvider(context: context).showPicker2(),
+                ),
+              ),
+              const SizedBox(height: 24),
+              ElevatedButton(
+                  onPressed: () {
+                    if (widget._formKey.currentState!.validate()) {}
+                  },
+                  child: const Text("Register")),
+              TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop(MaterialPageRoute(
+                        builder: (context) => LoginPageView()));
+                  },
+                  child: const Text("Login"))
+            ]),
+          ),
         ),
-      ]),
+      ),
     );
   }
 }
