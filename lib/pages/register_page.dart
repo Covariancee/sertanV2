@@ -41,14 +41,15 @@ class _RegisterPageViewState extends State<RegisterPageView> {
               inputText: 'Password',
             ),
             CupertinoButton(
-                onPressed: functionProvider.showPicker,
+                onPressed:  () =>
+                    FunctionProvider(context: context).showPicker(),
                 child: Text(cityProvider.selectedCity)),
             CupertinoButton(
                 child: Text(cityProvider.selectedDistrict), onPressed: () {}),
             ElevatedButton(onPressed: () {}, child: const Text("Register")),
             TextButton(
-                onPressed: () {
-                  Navigator.of(context).pop(
+                onPressed: () async{
+                  Navigator.of(context).push(
                       MaterialPageRoute(builder: (context) => LoginPageView()));
                 },
                 child: const Text("Login"))

@@ -6,10 +6,12 @@ import 'package:sertan/city_and_district_list.dart';
 import 'city_and_district_provider.dart';
 
 class FunctionProvider with ChangeNotifier {
-  FunctionProvider({required this.context});
   BuildContext context;
+  FunctionProvider({required this.context});
+
   void showPicker() {
-    final cityProvider = Provider.of<CityDistrictProvider>(context, listen: false);
+    final cityProvider =
+        Provider.of<CityDistrictProvider>(context, listen: false);
     showModalBottomSheet<void>(
       context: context,
       builder: (BuildContext context) {
@@ -20,15 +22,9 @@ class FunctionProvider with ChangeNotifier {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
+                  TextButton(onPressed: () {}, child: const Text("Cancel")),
                   TextButton(
-                      onPressed: () {
-                       
-                      },
-                      child: const Text("Cancel")),
-                  TextButton(
-                    onPressed: () {
-                      
-                    },
+                    onPressed: () {},
                     child: const Text("Confirm"),
                   )
                 ],
