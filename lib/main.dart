@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:sertan/pages/login_page.dart';
 import 'package:provider/provider.dart';
 import 'package:sertan/provider/city_and_district_provider.dart';
-import 'package:sertan/controller/function_controller.dart';
 
 void main() {
   runApp(MultiProvider(
