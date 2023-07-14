@@ -7,7 +7,7 @@ import '../widgets/text_input.dart';
 import '../provider/function_provider.dart';
 
 class RegisterPageView extends StatefulWidget {
-  RegisterPageView({super.key});
+  RegisterPageView({super.key, });
 
   @override
   State<RegisterPageView> createState() => _RegisterPageViewState();
@@ -25,10 +25,8 @@ class _RegisterPageViewState extends State<RegisterPageView> {
     final cityProvider = Provider.of<CityDistrictProvider>(context);
     //final functionProvider = Provider.of<FunctionProvider>(context);
     bool visible = cityProvider.isCitySelected;
-    final userData = {
-      "phoneNumber": phoneRegisterController.text,
-      "password": passwordRegisterController.text
-    };
+    
+    
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Container(
