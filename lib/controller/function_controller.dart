@@ -7,12 +7,12 @@ import '../provider/city_and_district_provider.dart';
 
 class FunctionProvider {
   BuildContext context;
-  FunctionProvider(
-      {required this.context,
-      required this.pickerText,
-      required this.confirmFunc,
-      required this.index});
-  int index;
+  FunctionProvider({
+    required this.context,
+    required this.pickerText,
+    required this.confirmFunc,
+  });
+
   int value = 0;
   List<Widget> pickerText;
   final confirmFunc;
@@ -35,7 +35,7 @@ class FunctionProvider {
                       child: const Text("Cancel")),
                   TextButton(
                     onPressed: () {
-                      confirmFunc;
+                      confirmFunc(value);
                       Navigator.of(context).pop();
                       // cityProvider.setSelectedCity = cities[value];
 

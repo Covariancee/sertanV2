@@ -24,11 +24,12 @@ class MealItem extends StatelessWidget {
         },
         child: Stack(
           children: [
-            Hero(
-              tag: meal.id,
+            Container(
+              width: double.infinity,
+              height: 300,
               child: FadeInImage(
                   placeholder: const AssetImage("assets/kTransparen.png"),
-                  fit: BoxFit.cover,
+                  fit: BoxFit.fill,
                   image: AssetImage(meal.image)),
             ),
             Positioned(

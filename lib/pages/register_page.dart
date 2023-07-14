@@ -18,7 +18,6 @@ class RegisterPageView extends StatefulWidget {
 }
 
 class _RegisterPageViewState extends State<RegisterPageView> {
-  int index = 0;
   TextEditingController nameController = TextEditingController();
   TextEditingController surnameController = TextEditingController();
 
@@ -31,9 +30,10 @@ class _RegisterPageViewState extends State<RegisterPageView> {
     final cityProvider = Provider.of<CityDistrictProvider>(context);
     //final functionProvider = Provider.of<FunctionProvider>(context);
     bool visible = cityProvider.isCitySelected;
-    int value = 0;
+ 
     return Scaffold(
       resizeToAvoidBottomInset: false,
+<<<<<<< HEAD
       body: Stack(
         children: [
           Container(
@@ -171,6 +171,108 @@ class _RegisterPageViewState extends State<RegisterPageView> {
                               },
                               child: const Text("Login"))
                         ]),
+=======
+      body: Container(
+        decoration: const BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage("assets/vtz_background.png"),
+                fit: BoxFit.cover)),
+        child: Form(
+          key: widget._formKey,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 32),
+            child: Stack(children: [
+              Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+                SizedBox(width: 200, child: Image.asset("assets/vtz_logo.png")),
+                NameInput(
+                  controller: nameController,
+                ),
+                SurnameInput(
+                  controller: surnameController,
+                ),
+                PhoneInput(
+                  controller: phoneRegisterController,
+                ),
+                EmailInput(controller: emailController),
+                PasswordInput(controller: passwordRegisterController),
+                Padding(
+                  padding: const EdgeInsets.only(top: 24),
+                  child: CupertinoButton(
+                    padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+                    borderRadius: BorderRadius.circular(8.0),
+                    color: Colors.blue,
+                    onPressed: () => FunctionProvider(
+                            context: context,
+                            pickerText:
+                                List<Widget>.generate(cities.length, (index) {
+                              return Center(
+                                child: Text(
+                                  cities[index],
+
+                                  //districts[cityProvider.selectedCity]![index],
+                                  style: const TextStyle(fontSize: 20),
+                                ),
+                              );
+                            }),
+                            confirmFunc: (value) {
+                            
+                              cityProvider.setSelectedCity = cities[value];
+                              if (districts[cityProvider.selectedCity] !=
+                                  null) {
+                                cityProvider.setSelectedDistrict =
+                                    districts[cityProvider.selectedCity]![0];
+                              }
+                            },
+                           )
+                        .showPicker(),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          textAlign: TextAlign.start,
+                          cityProvider.selectedCity,
+                          style: const TextStyle(color: Colors.white),
+                        ),
+                        const Icon(
+                          Icons.keyboard_arrow_down,
+                          color: Colors.white,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 24),
+                Visibility(
+                  visible: visible,
+                  child: CupertinoButton(
+                    padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+                    color: Colors.blue,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          cityProvider.selectedDistrict,
+                          style: const TextStyle(color: Colors.white),
+                        ),
+                        const Icon(Icons.keyboard_arrow_down)
+                      ],
+                    ),
+                    onPressed: () => FunctionProvider(
+                      context: context,
+                      
+                      pickerText: List<Widget>.generate(districts.length, (value) {
+                        return Center(
+                          child: Text(
+                            districts[cityProvider.selectedCity]![value],
+                            style: const TextStyle(fontSize: 20),
+                          ),
+                        );
+                      }),
+                      confirmFunc: (value) => cityProvider.setSelectedDistrict =
+                          districts[cityProvider.selectedCity]![value],
+                      
+                    ).showPicker(),
+>>>>>>> d796e9ed6770fd0f8058f12042ff09626d685317
                   ),
                 ]),
               ),

@@ -4,6 +4,7 @@ import 'package:sertan/city_and_district_list.dart';
 class CityDistrictProvider with ChangeNotifier {
   String _selectedCity = "No city choosen";
   String _selectedDistrict = "No district choosen";
+
   bool _isCitySelected = false;
 
   String get selectedCity => _selectedCity;
@@ -11,6 +12,7 @@ class CityDistrictProvider with ChangeNotifier {
   bool get isCitySelected => _isCitySelected;
 
   set setSelectedCity(String city) {
+    
     _selectedCity = city;
     if (_selectedCity == cities[0]) {
       _isCitySelected = false;
