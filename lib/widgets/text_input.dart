@@ -18,10 +18,18 @@ class _NameInputState extends State<NameInput> {
   Widget build(BuildContext context) {
     return TextFormField(
       controller: widget.controller,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
       validator: (value) {
         if (value == null || value.isEmpty) {
-          return 'Please enter valid information';
-        } else {
+          return 'cannot be empty';
+        }
+        if (value.length <= 1) {
+          return 'must be longer than 2';
+        }
+        if (value.length >= 17) {
+          return 'too long';
+        }
+        {
           return null;
         }
       },
@@ -49,10 +57,18 @@ class _SurnameInputState extends State<SurnameInput> {
   Widget build(BuildContext context) {
     return TextFormField(
       controller: widget.controller,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
       validator: (value) {
         if (value == null || value.isEmpty) {
-          return 'Please enter valid information';
-        } else {
+          return 'cannot be empty';
+        }
+        if (value.length <= 1) {
+          return 'must be longer than 2';
+        }
+        if (value.length >= 17) {
+          return 'too long';
+        }
+        {
           return null;
         }
       },
@@ -86,9 +102,13 @@ class _PhoneInputState extends State<PhoneInput> {
     return TextFormField(
       style: const TextStyle(color: Colors.white),
       controller: widget.controller,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
       validator: (value) {
         if (value == null || value.isEmpty) {
           return 'Please enter a valid phone number';
+        }
+        if (value.length != 19) {
+          return 'too short';
         } else {
           return null;
         }
@@ -132,6 +152,9 @@ class _EmailInputState extends State<EmailInput> {
       validator: (value) {
         if (value == null || value.isEmpty || !_validateEmail(value)) {
           return 'Please enter a valid email';
+        }
+        if (value.length >= 35) {
+          return 'Please enter a valid email';
         } else {
           return null;
         }
@@ -168,8 +191,15 @@ class _PasswordInputState extends State<PasswordInput> {
       controller: widget.controller,
       validator: (value) {
         if (value == null || value.isEmpty) {
-          return 'Please enter a valid password';
-        } else {
+          return 'cannot be empty';
+        }
+        if (value.length <= 6) {
+          return 'must be longer than 6';
+        }
+        if (value.length >= 17) {
+          return 'too long';
+        }
+        {
           return null;
         }
       },

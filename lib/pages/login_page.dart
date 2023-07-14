@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sertan/pages/category_page.dart';
 import 'package:sertan/pages/register_page.dart';
+
 import '../widgets/text_input.dart';
 
 class LoginPageView extends StatefulWidget {
