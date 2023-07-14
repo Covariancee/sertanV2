@@ -40,7 +40,7 @@ class _RegisterPageViewState extends State<RegisterPageView> {
             padding: const EdgeInsets.symmetric(horizontal: 32),
             child: Stack(children: [
               Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-                SizedBox(width: 250, child: Image.asset("assets/vtz_logo.png")),
+                SizedBox(width: 200, child: Image.asset("assets/vtz_logo.png")),
                 NameInput(
                   controller: nameController,
                 ),
