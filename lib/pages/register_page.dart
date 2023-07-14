@@ -59,7 +59,7 @@ class _RegisterPageViewState extends State<RegisterPageView> {
                 Padding(
                   padding: const EdgeInsets.only(top: 24),
                   child: CupertinoButton(
-                    padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
+                    padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
                     borderRadius: BorderRadius.circular(8.0),
                     color: Colors.blue,
                     onPressed: () =>
