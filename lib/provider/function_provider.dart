@@ -25,17 +25,17 @@ class FunctionProvider with ChangeNotifier {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  TextButton(onPressed: () {}, child: const Text("Cancel")),
+                  TextButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      child: const Text("Cancel")),
                   TextButton(
                     onPressed: () {
-                      if (districts[cityProvider.selectedCity] == null) {
-                        Navigator.of(context).pop();
-                      } else {
-                        Navigator.of(context).pop();
-                        cityProvider.setSelectedCity = cities[value];
-                        cityProvider.setSelectedDistrict =
-                            districts[cityProvider.selectedCity]![0];
-                      }
+                      print(districts[cityProvider.selectedCity]);
+
+                      Navigator.of(context).pop();
+                      cityProvider.setSelectedCity = cities[value];
                     },
                     child: const Text("Confirm"),
                   )
