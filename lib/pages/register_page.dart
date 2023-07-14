@@ -17,7 +17,7 @@ class RegisterPageView extends StatefulWidget {
 class _RegisterPageViewState extends State<RegisterPageView> {
   TextEditingController nameSurnameController = TextEditingController();
   TextEditingController phoneRegisterController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
+  TextEditingController emailRegisterController = TextEditingController();
   TextEditingController passwordRegisterController = TextEditingController();
 
   @override
@@ -52,7 +52,7 @@ class _RegisterPageViewState extends State<RegisterPageView> {
                 PhoneInput(
                   controller: phoneRegisterController,
                 ),
-                EmailInput(controller: emailController),
+                EmailInput(controller: emailRegisterController),
                 PasswordInput(controller: passwordRegisterController),
                 Padding(
                   padding: const EdgeInsets.only(top: 24),
@@ -107,7 +107,8 @@ class _RegisterPageViewState extends State<RegisterPageView> {
                 TextButton(
                     onPressed: () {
                       Navigator.of(context).pop(MaterialPageRoute(
-                          builder: (context) => LoginPageView()));
+                          builder: (context) =>
+                              LoginPageView(userData: userData)));
                     },
                     child: const Text("Login"))
               ]),
