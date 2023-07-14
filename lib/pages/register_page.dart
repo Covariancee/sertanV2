@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import '../provider/city_and_district_provider.dart';
 import '../widgets/text_input.dart';
 import '../provider/function_provider.dart';
+import 'login_page.dart';
 
 class RegisterPageView extends StatefulWidget {
   RegisterPageView({
@@ -44,12 +45,10 @@ class _RegisterPageViewState extends State<RegisterPageView> {
             child: Stack(children: [
               Column(mainAxisAlignment: MainAxisAlignment.center, children: [
                 SizedBox(width: 250, child: Image.asset("assets/vtz_logo.png")),
-                NameSurnameInput(
-                  inputText: 'Name',
+                NameInput(
                   controller: nameController,
                 ),
-                NameSurnameInput(
-                  inputText: 'Surname',
+                SurnameInput(
                   controller: surnameController,
                 ),
                 PhoneInput(
