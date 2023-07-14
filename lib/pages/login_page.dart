@@ -3,8 +3,7 @@ import 'package:sertan/pages/register_page.dart';
 import '../widgets/text_input.dart';
 
 class LoginPageView extends StatefulWidget {
-  LoginPageView({super.key, required this.userData});
-  final userData;
+  LoginPageView({super.key});
 
   @override
   State<LoginPageView> createState() => _LoginPageViewState();

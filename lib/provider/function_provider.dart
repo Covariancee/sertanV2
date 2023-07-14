@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sertan/city_and_district_list.dart';
 
-
 import 'city_and_district_provider.dart';
 
 class FunctionProvider with ChangeNotifier {
@@ -29,10 +28,14 @@ class FunctionProvider with ChangeNotifier {
                   TextButton(onPressed: () {}, child: const Text("Cancel")),
                   TextButton(
                     onPressed: () {
-                      Navigator.of(context).pop();
-                      cityProvider.setSelectedCity = cities[value];
-                      cityProvider.setSelectedDistrict =
-                          districts[cityProvider.selectedCity]![0];
+                      if (districts[cityProvider.selectedCity] == null) {
+                        Navigator.of(context).pop();
+                      } else {
+                        Navigator.of(context).pop();
+                        cityProvider.setSelectedCity = cities[value];
+                        cityProvider.setSelectedDistrict =
+                            districts[cityProvider.selectedCity]![0];
+                      }
                     },
                     child: const Text("Confirm"),
                   )

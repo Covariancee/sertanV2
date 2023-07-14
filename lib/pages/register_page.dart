@@ -25,10 +25,7 @@ class _RegisterPageViewState extends State<RegisterPageView> {
     final cityProvider = Provider.of<CityDistrictProvider>(context);
     //final functionProvider = Provider.of<FunctionProvider>(context);
     bool visible = cityProvider.isCitySelected;
-    final userData = {
-      "phoneNumber": phoneRegisterController.text,
-      "password": passwordRegisterController.text
-    };
+
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Container(
@@ -109,8 +106,7 @@ class _RegisterPageViewState extends State<RegisterPageView> {
                 TextButton(
                     onPressed: () {
                       Navigator.of(context).pop(MaterialPageRoute(
-                          builder: (context) =>
-                              LoginPageView(userData: userData)));
+                          builder: (context) => LoginPageView()));
                     },
                     child: const Text("Login"))
               ]),
