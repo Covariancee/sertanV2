@@ -7,7 +7,9 @@ import '../widgets/text_input.dart';
 import '../provider/function_provider.dart';
 
 class RegisterPageView extends StatefulWidget {
-  RegisterPageView({super.key, });
+  RegisterPageView({
+    super.key,
+  });
 
   @override
   State<RegisterPageView> createState() => _RegisterPageViewState();
@@ -15,9 +17,11 @@ class RegisterPageView extends StatefulWidget {
 }
 
 class _RegisterPageViewState extends State<RegisterPageView> {
-  TextEditingController nameSurnameController = TextEditingController();
+  TextEditingController nameController = TextEditingController();
+  TextEditingController surnameController = TextEditingController();
+
   TextEditingController phoneRegisterController = TextEditingController();
-  TextEditingController emailRegisterController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
   TextEditingController passwordRegisterController = TextEditingController();
 
   @override
@@ -25,8 +29,7 @@ class _RegisterPageViewState extends State<RegisterPageView> {
     final cityProvider = Provider.of<CityDistrictProvider>(context);
     //final functionProvider = Provider.of<FunctionProvider>(context);
     bool visible = cityProvider.isCitySelected;
-    
-    
+
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Container(
@@ -43,16 +46,16 @@ class _RegisterPageViewState extends State<RegisterPageView> {
                 SizedBox(width: 250, child: Image.asset("assets/vtz_logo.png")),
                 NameSurnameInput(
                   inputText: 'Name',
-                  controller: nameSurnameController,
+                  controller: nameController,
                 ),
                 NameSurnameInput(
                   inputText: 'Surname',
-                  controller: nameSurnameController,
+                  controller: surnameController,
                 ),
                 PhoneInput(
                   controller: phoneRegisterController,
                 ),
-                EmailInput(controller: emailRegisterController),
+                EmailInput(controller: emailController),
                 PasswordInput(controller: passwordRegisterController),
                 Padding(
                   padding: const EdgeInsets.only(top: 24),
@@ -101,14 +104,18 @@ class _RegisterPageViewState extends State<RegisterPageView> {
                 const SizedBox(height: 24),
                 ElevatedButton(
                     onPressed: () {
-                      if (widget._formKey.currentState!.validate()) {}
+                      if (widget._formKey.currentState!.validate()) {
+                        print(
+                            "ID: ${phoneRegisterController.text} Name Surname: ${nameController.text} ${surnameController.text} Password: ${passwordRegisterController.text} City&District: ${cityProvider.selectedCity} ${cityProvider.selectedDistrict} Email: ${emailController.text}");
+                        Navigator.of(context).pop(MaterialPageRoute(
+                            builder: (context) => LoginPageView()));
+                      }
                     },
                     child: const Text("Register")),
                 TextButton(
                     onPressed: () {
                       Navigator.of(context).pop(MaterialPageRoute(
-                          builder: (context) =>
-                              LoginPageView(userData: userData)));
+                          builder: (context) => LoginPageView()));
                     },
                     child: const Text("Login"))
               ]),
