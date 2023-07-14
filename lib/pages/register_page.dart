@@ -18,7 +18,6 @@ class RegisterPageView extends StatefulWidget {
 }
 
 class _RegisterPageViewState extends State<RegisterPageView> {
-  int index = 0;
   TextEditingController nameController = TextEditingController();
   TextEditingController surnameController = TextEditingController();
 
@@ -31,7 +30,7 @@ class _RegisterPageViewState extends State<RegisterPageView> {
     final cityProvider = Provider.of<CityDistrictProvider>(context);
     //final functionProvider = Provider.of<FunctionProvider>(context);
     bool visible = cityProvider.isCitySelected;
-    int value = 0;
+ 
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Container(
@@ -45,7 +44,7 @@ class _RegisterPageViewState extends State<RegisterPageView> {
             padding: const EdgeInsets.symmetric(horizontal: 32),
             child: Stack(children: [
               Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-                SizedBox(width: 250, child: Image.asset("assets/vtz_logo.png")),
+                SizedBox(width: 200, child: Image.asset("assets/vtz_logo.png")),
                 NameInput(
                   controller: nameController,
                 ),
@@ -60,7 +59,7 @@ class _RegisterPageViewState extends State<RegisterPageView> {
                 Padding(
                   padding: const EdgeInsets.only(top: 24),
                   child: CupertinoButton(
-                    padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
+                    padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
                     borderRadius: BorderRadius.circular(8.0),
                     color: Colors.blue,
                     onPressed: () => FunctionProvider(
@@ -76,16 +75,16 @@ class _RegisterPageViewState extends State<RegisterPageView> {
                                 ),
                               );
                             }),
-                            confirmFunc: () {
-                              Navigator.of(context).pop();
-                              cityProvider.setSelectedCity = cities[index];
+                            confirmFunc: (value) {
+                            
+                              cityProvider.setSelectedCity = cities[value];
                               if (districts[cityProvider.selectedCity] !=
                                   null) {
                                 cityProvider.setSelectedDistrict =
                                     districts[cityProvider.selectedCity]![0];
                               }
                             },
-                            index: index)
+                           )
                         .showPicker(),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -121,17 +120,18 @@ class _RegisterPageViewState extends State<RegisterPageView> {
                     ),
                     onPressed: () => FunctionProvider(
                       context: context,
-                      pickerText: List<Widget>.generate(cities.length, (index) {
+                      
+                      pickerText: List<Widget>.generate(districts.length, (value) {
                         return Center(
                           child: Text(
-                            districts[cityProvider.selectedCity]![index],
+                            districts[cityProvider.selectedCity]![value],
                             style: const TextStyle(fontSize: 20),
                           ),
                         );
                       }),
-                      confirmFunc: () => cityProvider.setSelectedDistrict =
+                      confirmFunc: (value) => cityProvider.setSelectedDistrict =
                           districts[cityProvider.selectedCity]![value],
-                      index: index,
+                      
                     ).showPicker(),
                   ),
                 ),

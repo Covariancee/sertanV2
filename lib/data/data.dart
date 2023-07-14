@@ -50,6 +50,51 @@ const dummyMeals = [
       detail:
           'Şakşuka, patlıcan, biber, domates gibi sebzelerin kavrulup üzerine sos dökülerek hazırlanan bir tür mezedir. '),
   Meal(
+      id: "m18",
+      categories: ["c1"],
+      title: "Barbunya Pilaki",
+      image: "assets/category/mezeler.jpg",
+      duration: 10,
+      affordability: Affordability.affordable,
+      detail:
+          'Pilaki, patlıcan, biber, domates gibi sebzelerin kavrulup üzerine sos dökülerek hazırlanan bir tür mezedir. '),
+  Meal(
+      id: "m19",
+      categories: ["c1"],
+      title: "Çiğ Köfte",
+      image: "assets/category/mezeler.jpg",
+      duration: 10,
+      affordability: Affordability.affordable,
+      detail:
+          'Çiğ Köfte, patlıcan, biber, domates gibi sebzelerin kavrulup üzerine sos dökülerek hazırlanan bir tür mezedir. '),
+  Meal(
+      id: "m20",
+      categories: ["c1"],
+      title: "Fava",
+      image: "assets/category/mezeler.jpg",
+      duration: 10,
+      affordability: Affordability.affordable,
+      detail:
+          'Fava, patlıcan, biber, domates gibi sebzelerin kavrulup üzerine sos dökülerek hazırlanan bir tür mezedir. '),
+  Meal(
+      id: "m21",
+      categories: ["c1"],
+      title: "Topik",
+      image: "assets/category/mezeler.jpg",
+      duration: 10,
+      affordability: Affordability.affordable,
+      detail:
+          'Topik, patlıcan, biber, domates gibi sebzelerin kavrulup üzerine sos dökülerek hazırlanan bir tür mezedir. '),
+  Meal(
+      id: "m3",
+      categories: ["c1"],
+      title: "Çiroz",
+      image: "assets/category/mezeler.jpg",
+      duration: 10,
+      affordability: Affordability.affordable,
+      detail:
+          'Çiroz, patlıcan, biber, domates gibi sebzelerin kavrulup üzerine sos dökülerek hazırlanan bir tür mezedir. '),
+  Meal(
       id: "m3",
       categories: ["c2"],
       title: "Çoban Salatası",
@@ -191,4 +236,22 @@ const dummyMeals = [
       affordability: Affordability.pricey,
       detail:
           'Tuborg Gold, Carlsberg Group tarafından üretilen bir biradır. Türkiye’de yaygın olarak tüketilir.'),
+  Meal(
+      id: "m22",
+      categories: ["c11"],
+      title: "Cips",
+      image: "assets/category/atistirmaliklar.jpg",
+      duration: 1,
+      affordability: Affordability.pricey,
+      detail:
+          'Cips, Carlsberg Group tarafından üretilen bir biradır. Türkiye’de yaygın olarak tüketilir.'),
+  Meal(
+      id: "m23",
+      categories: ["c12"],
+      title: "İstavrit",
+      image: "assets/category/baliklar.jpg",
+      duration: 1,
+      affordability: Affordability.pricey,
+      detail:
+          'Balık, Carlsberg Group tarafından üretilen bir biradır. Türkiye’de yaygın olarak tüketilir.'),
 ];
