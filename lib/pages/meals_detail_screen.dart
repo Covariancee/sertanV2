@@ -15,6 +15,14 @@ class _MealDetailsScreenState extends State<MealDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        bottomNavigationBar: BottomNavigationBar(
+          items: [
+            BottomNavigationBarItem(
+                icon: Icon(Icons.favorite), label: 'Favori'),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.shopping_basket), label: 'Satın Al')
+          ],
+        ),
         appBar: AppBar(
           title: Text(widget.meal.title),
         ),
@@ -29,7 +37,7 @@ class _MealDetailsScreenState extends State<MealDetailsScreen> {
               height: 14,
             ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16),
+              padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -49,20 +57,6 @@ class _MealDetailsScreenState extends State<MealDetailsScreen> {
                   const SizedBox(
                     height: 16,
                   ),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      IconButton(
-                        onPressed: () {},
-                        icon: const Icon(Icons.favorite),
-                      ),
-                      IconButton(
-                        onPressed: () {},
-                        icon: const Icon(Icons.shopping_basket),
-                      ),
-                    ],
-                  )
                 ],
               ),
             )
