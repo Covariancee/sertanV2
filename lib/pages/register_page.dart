@@ -15,7 +15,8 @@ class RegisterPageView extends StatefulWidget {
 }
 
 class _RegisterPageViewState extends State<RegisterPageView> {
-  TextEditingController nameSurnameController = TextEditingController();
+  TextEditingController nameController = TextEditingController();
+  TextEditingController surnameController = TextEditingController();
   TextEditingController phoneRegisterController = TextEditingController();
   TextEditingController emailRegisterController = TextEditingController();
   TextEditingController passwordRegisterController = TextEditingController();
@@ -40,13 +41,11 @@ class _RegisterPageViewState extends State<RegisterPageView> {
             child: Stack(children: [
               Column(mainAxisAlignment: MainAxisAlignment.center, children: [
                 SizedBox(width: 250, child: Image.asset("assets/vtz_logo.png")),
-                NameSurnameInput(
-                  inputText: 'Name',
-                  controller: nameSurnameController,
+                NameInput(
+                  controller: nameController,
                 ),
-                NameSurnameInput(
-                  inputText: 'Surname',
-                  controller: nameSurnameController,
+                SurnameInput(
+                  controller: surnameController,
                 ),
                 PhoneInput(
                   controller: phoneRegisterController,
@@ -56,7 +55,7 @@ class _RegisterPageViewState extends State<RegisterPageView> {
                 Padding(
                   padding: const EdgeInsets.only(top: 24),
                   child: CupertinoButton(
-                    padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
+                    padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
                     borderRadius: BorderRadius.circular(8.0),
                     color: Colors.blue,
                     onPressed: () =>
@@ -90,7 +89,7 @@ class _RegisterPageViewState extends State<RegisterPageView> {
                           cityProvider.selectedDistrict,
                           style: const TextStyle(color: Colors.white),
                         ),
-                        Icon(Icons.keyboard_arrow_down)
+                        const Icon(Icons.keyboard_arrow_down)
                       ],
                     ),
                     onPressed: () =>

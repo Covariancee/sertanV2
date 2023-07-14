@@ -1,21 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
-// ignore: must_be_immutable
-class NameSurnameInput extends StatefulWidget {
-  NameSurnameInput({
+class NameInput extends StatefulWidget {
+  const NameInput({
     super.key,
-    required this.inputText,
     required this.controller,
   });
-  String inputText;
+
   final TextEditingController controller;
 
   @override
-  State<NameSurnameInput> createState() => _NameSurnameInputState();
+  State<NameInput> createState() => _NameInputState();
 }
 
-class _NameSurnameInputState extends State<NameSurnameInput> {
+class _NameInputState extends State<NameInput> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -27,8 +25,39 @@ class _NameSurnameInputState extends State<NameSurnameInput> {
           return null;
         }
       },
-      decoration: InputDecoration(
-        label: Text(widget.inputText),
+      decoration: const InputDecoration(
+        label: Text('Name'),
+      ),
+    );
+  }
+}
+
+class SurnameInput extends StatefulWidget {
+  const SurnameInput({
+    super.key,
+    required this.controller,
+  });
+
+  final TextEditingController controller;
+
+  @override
+  State<SurnameInput> createState() => _SurnameInputState();
+}
+
+class _SurnameInputState extends State<SurnameInput> {
+  @override
+  Widget build(BuildContext context) {
+    return TextFormField(
+      controller: widget.controller,
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return 'Please enter valid information';
+        } else {
+          return null;
+        }
+      },
+      decoration: const InputDecoration(
+        label: Text('Surname'),
       ),
     );
   }
@@ -55,7 +84,7 @@ class _PhoneInputState extends State<PhoneInput> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      style: TextStyle(color: Colors.white),
+      style: const TextStyle(color: Colors.white),
       controller: widget.controller,
       validator: (value) {
         if (value == null || value.isEmpty) {
@@ -66,7 +95,10 @@ class _PhoneInputState extends State<PhoneInput> {
       },
       keyboardType: TextInputType.phone,
       inputFormatters: [maskFormatter],
-      decoration: const InputDecoration(label: Text('Phone Number', )),
+      decoration: const InputDecoration(
+          label: Text(
+        'Phone Number',
+      )),
     );
   }
 }
@@ -95,7 +127,7 @@ class _EmailInputState extends State<EmailInput> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      style: TextStyle(color: Colors.white),
+      style: const TextStyle(color: Colors.white),
       controller: widget.controller,
       validator: (value) {
         if (value == null || value.isEmpty || !_validateEmail(value)) {
