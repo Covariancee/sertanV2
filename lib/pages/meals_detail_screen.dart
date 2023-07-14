@@ -58,13 +58,26 @@ class _MealDetailsScreenState extends State<MealDetailsScreen> {
                     height: 16,
                   ),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       const Text(
                         'Fiyat TL',
                         style: TextStyle(fontSize: 15),
                       ),
+                      Text(
+                        date.toString(),
+                        style: TextStyle(fontSize: 15),
+                      ),
                     ],
                   ),
+                  SizedBox(height: 16),
+                  Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Icon(
+                      Icons.favorite,
+                      size: 50,
+                    ),
+                  )
                 ],
               ),
             ),
