@@ -25,7 +25,10 @@ class _RegisterPageViewState extends State<RegisterPageView> {
     final cityProvider = Provider.of<CityDistrictProvider>(context);
     //final functionProvider = Provider.of<FunctionProvider>(context);
     bool visible = cityProvider.isCitySelected;
-
+    final userData = {
+      "phoneNumber": phoneRegisterController.text,
+      "password": passwordRegisterController.text
+    };
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Container(
