@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:sertan/provider/meals_provider.dart';
 import '../data/data.dart';
 import '../models/category.dart';
 import 'meals_screen.dart';
@@ -12,18 +11,12 @@ class CategoryPageView extends StatefulWidget {
 }
 
 class _CategoryPageViewState extends State<CategoryPageView> {
-
-
   @override
   Widget build(BuildContext context) {
-    return Consumer<ItemList>(
-      builder: (context, providerItem, child) {
-        return Scaffold(
-          body: SafeArea(
-            child: _buildBody(context),
-          ),
-        );
-      },
+    return Scaffold(
+      body: SafeArea(
+        child: _buildBody(context),
+      ),
     );
   }
 }
@@ -33,7 +26,7 @@ _buildBody(BuildContext context) {
     padding: const EdgeInsets.all(20),
     gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
-        childAspectRatio: 1,
+        childAspectRatio: 1.5,
         crossAxisSpacing: 20,
         mainAxisSpacing: 20),
     children: [
@@ -49,19 +42,19 @@ _buildBody(BuildContext context) {
 }
 
 void _selectCategory(BuildContext context, Category category) {
-    final filteredMeals = dummyMeals
-        .where((meal) => meal.categories.contains(category.id))
-        .toList();
+  final filteredMeals = dummyMeals
+      .where((meal) => meal.categories.contains(category.id))
+      .toList();
 
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (ctx) => MealsScreen(
-          meals: filteredMeals,
-          title: category.title,
-        ),
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (ctx) => MealsScreen(
+        meals: filteredMeals,
+        title: category.title,
       ),
-    );
+    ),
+  );
 }
 
 class CategoryCard extends StatelessWidget {

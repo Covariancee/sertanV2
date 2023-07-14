@@ -13,13 +13,13 @@ class MealsScreen extends StatelessWidget {
   final String? title;
   final List<Meal> meals;
 
-  // void selectMeal(BuildContext context, Meal meal) {
-  //   Navigator.of(context).push(
-  //     MaterialPageRoute(
-  //       builder: (ctx) => MealDetailsScreen(meal: meal),
-  //     ),
-  //   );
-  // }
+  void selectMeal(BuildContext context, Meal meal) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (ctx) => MealDetailsScreen(meal: meal),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +50,7 @@ class MealsScreen extends StatelessWidget {
           itemBuilder: (context, index) => MealItem(
                 meal: meals[index],
                 onSelectMeal: (meal) {
-                  //selectMeal(context, meal);
+                  selectMeal(context, meal);
                 },
               ));
     }
