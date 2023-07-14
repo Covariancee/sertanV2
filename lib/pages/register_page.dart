@@ -5,9 +5,12 @@ import 'package:flutter/cupertino.dart';
 import '../provider/city_and_district_provider.dart';
 import '../widgets/text_input.dart';
 import '../provider/function_provider.dart';
+import 'login_page.dart';
 
 class RegisterPageView extends StatefulWidget {
-  RegisterPageView({super.key});
+  RegisterPageView({
+    super.key,
+  });
 
   @override
   State<RegisterPageView> createState() => _RegisterPageViewState();
@@ -17,8 +20,9 @@ class RegisterPageView extends StatefulWidget {
 class _RegisterPageViewState extends State<RegisterPageView> {
   TextEditingController nameController = TextEditingController();
   TextEditingController surnameController = TextEditingController();
+
   TextEditingController phoneRegisterController = TextEditingController();
-  TextEditingController emailRegisterController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
   TextEditingController passwordRegisterController = TextEditingController();
 
   @override
@@ -50,12 +54,12 @@ class _RegisterPageViewState extends State<RegisterPageView> {
                 PhoneInput(
                   controller: phoneRegisterController,
                 ),
-                EmailInput(controller: emailRegisterController),
+                EmailInput(controller: emailController),
                 PasswordInput(controller: passwordRegisterController),
                 Padding(
                   padding: const EdgeInsets.only(top: 24),
                   child: CupertinoButton(
-                    padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+                    padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
                     borderRadius: BorderRadius.circular(8.0),
                     color: Colors.blue,
                     onPressed: () =>
@@ -89,7 +93,7 @@ class _RegisterPageViewState extends State<RegisterPageView> {
                           cityProvider.selectedDistrict,
                           style: const TextStyle(color: Colors.white),
                         ),
-                        const Icon(Icons.keyboard_arrow_down)
+                        Icon(Icons.keyboard_arrow_down)
                       ],
                     ),
                     onPressed: () =>
@@ -99,7 +103,12 @@ class _RegisterPageViewState extends State<RegisterPageView> {
                 const SizedBox(height: 24),
                 ElevatedButton(
                     onPressed: () {
-                      if (widget._formKey.currentState!.validate()) {}
+                      if (widget._formKey.currentState!.validate()) {
+                        print(
+                            "ID: ${phoneRegisterController.text} Name Surname: ${nameController.text} ${surnameController.text} Password: ${passwordRegisterController.text} City&District: ${cityProvider.selectedCity} ${cityProvider.selectedDistrict} Email: ${emailController.text}");
+                        Navigator.of(context).pop(MaterialPageRoute(
+                            builder: (context) => LoginPageView()));
+                      }
                     },
                     child: const Text("Register")),
                 TextButton(

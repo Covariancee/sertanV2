@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sertan/pages/category_page.dart';
 import 'package:sertan/pages/register_page.dart';
 import '../widgets/text_input.dart';
 
@@ -15,6 +16,13 @@ class _LoginPageViewState extends State<LoginPageView> {
   Widget build(BuildContext context) {
     TextEditingController phoneLoginController = TextEditingController();
     TextEditingController passwordLoginController = TextEditingController();
+    void authLogin() {
+      if (phoneLoginController.text == "+90 (505) 028-93-94" &&
+          passwordLoginController.text == "aa") {
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (context) => CategoryPageView()));
+      }
+    }
 
     return Scaffold(
       body: Container(
@@ -36,7 +44,11 @@ class _LoginPageViewState extends State<LoginPageView> {
                 width: 145,
                 child: ElevatedButton(
                     onPressed: () {
-                      if (widget._formKey.currentState!.validate()) ;
+                      if (widget._formKey.currentState!.validate()) {
+                        print(
+                            "ID: ${phoneLoginController.text} Password: ${passwordLoginController.text}");
+                        authLogin();
+                      }
                     },
                     child: const Text("Login")),
               ),
