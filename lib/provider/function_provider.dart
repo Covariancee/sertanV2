@@ -32,10 +32,12 @@ class FunctionProvider with ChangeNotifier {
                       child: const Text("Cancel")),
                   TextButton(
                     onPressed: () {
-                      print(districts[cityProvider.selectedCity]);
-
                       Navigator.of(context).pop();
                       cityProvider.setSelectedCity = cities[value];
+                      if (districts[cityProvider.selectedCity] != null) {
+                        cityProvider.setSelectedDistrict =
+                            districts[cityProvider.selectedCity]![0];
+                      }
                     },
                     child: const Text("Confirm"),
                   )

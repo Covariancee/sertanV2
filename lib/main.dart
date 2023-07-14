@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:sertan/pages/category_page.dart';
 import 'package:sertan/pages/login_page.dart';
 import 'package:provider/provider.dart';
+import 'package:sertan/pages/meals_detail_screen.dart';
 import 'package:sertan/provider/city_and_district_provider.dart';
 import 'package:sertan/provider/function_provider.dart';
 
@@ -28,7 +30,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData.dark(),
-      home: LoginPageView(),
+      home: CategoryPageView(),
     );
   }
 }

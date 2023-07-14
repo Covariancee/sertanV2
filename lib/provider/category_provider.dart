@@ -1,61 +1,31 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+
 import '../data/data.dart';
 import '../models/category.dart';
-import 'meals_screen.dart';
+import '../pages/meals_screen.dart';
 
-class CategoryPageView extends StatefulWidget {
-  const CategoryPageView({super.key});
-  @override
-  State<CategoryPageView> createState() => _CategoryPageViewState();
-}
+// class CategoryProvider extends ChangeNotifier {
+//   void _selectCategory(BuildContext context, Category category) {
 
-class _CategoryPageViewState extends State<CategoryPageView> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: _buildBody(context),
-      ),
-    );
-  }
-}
+//     Navigator.push(
+//       context,
+//       MaterialPageRoute(
+//         builder: (ctx) => MealsScreen(
+//           meals: meal,
+//           title: category.title,
+//         ),
+//       ),
+//     );
+//   }
 
-_buildBody(BuildContext context) {
-  return GridView(
-    padding: const EdgeInsets.all(20),
-    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        childAspectRatio: 1,
-        crossAxisSpacing: 20,
-        mainAxisSpacing: 20),
-    children: [
-      for (final category in availableCategories)
-        CategoryCard(
-          category: category,
-          onSelectCategory: () {
-            _selectCategory(context, category);
-          },
-        )
-    ],
-  );
-}
-
-void _selectCategory(BuildContext context, Category category) {
-  final filteredMeals = dummyMeals
-      .where((meal) => meal.categories.contains(category.id))
-      .toList();
-
-  Navigator.push(
-    context,
-    MaterialPageRoute(
-      builder: (ctx) => MealsScreen(
-        meals: filteredMeals,
-        title: category.title,
-      ),
-    ),
-  );
-}
+//    for (final category in availableCategories)
+//          CategoryCard(
+//            category: category,
+//            onSelectCategory: () {
+//              _selectCategory(context, category);
+//            },
+//         )
+// }
 
 class CategoryCard extends StatelessWidget {
   const CategoryCard(
