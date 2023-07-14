@@ -45,7 +45,7 @@ class _RegisterPageViewState extends State<RegisterPageView> {
             padding: const EdgeInsets.symmetric(horizontal: 32),
             child: Stack(children: [
               Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-                SizedBox(width: 250, child: Image.asset("assets/vtz_logo.png")),
+                SizedBox(width: 200, child: Image.asset("assets/vtz_logo.png")),
                 NameInput(
                   controller: nameController,
                 ),
@@ -60,7 +60,7 @@ class _RegisterPageViewState extends State<RegisterPageView> {
                 Padding(
                   padding: const EdgeInsets.only(top: 24),
                   child: CupertinoButton(
-                    padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
+                    padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
                     borderRadius: BorderRadius.circular(8.0),
                     color: Colors.blue,
                     onPressed: () => FunctionProvider(
