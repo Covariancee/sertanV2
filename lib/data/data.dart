@@ -21,10 +21,13 @@ const availableCategories = {
       id: "c8",
       title: "Alkolsüz İçecekler",
       image: "assets/category/alkolsuzicecekler.jpg"),
+  Category(id: "c9", title: "Rakılar", image: "assets/category/rakilar.jpg"),
+  Category(id: "c10", title: "Biralar", image: "assets/category/biralar.jpg"),
   Category(
-      id: "c9",
-      title: "Alkolllü İçkiler",
-      image: "assets/category/alkolluicecekler.jpg"),
+      id: "c11",
+      title: "Atıştırmalıklar",
+      image: "assets/category/atistirmaliklar.jpg"),
+  Category(id: "c12", title: "Balıklar", image: "assets/category/baliklar.jpg"),
 };
 
 const dummyMeals = [
@@ -107,7 +110,8 @@ const dummyMeals = [
       image: "assets/category/anayemekler.jpg",
       duration: 30,
       affordability: Affordability.luxurious,
-      detail: 'Kuzu şiş, kuzu etinin küçük parçalara kesilerek şişe dizilmesiyle hazırlanan bir yemektir.'),
+      detail:
+          'Kuzu şiş, kuzu etinin küçük parçalara kesilerek şişe dizilmesiyle hazırlanan bir yemektir.'),
   Meal(
       id: "m10",
       categories: ["c5"],
@@ -115,7 +119,8 @@ const dummyMeals = [
       image: "assets/category/anayemekler.jpg",
       duration: 35,
       affordability: Affordability.luxurious,
-      detail: 'Adana kebabı, kıyma, soğan ve baharatların karıştırılmasıyla hazırlanan bir kebap çeşididir.'),
+      detail:
+          'Adana kebabı, kıyma, soğan ve baharatların karıştırılmasıyla hazırlanan bir kebap çeşididir.'),
   Meal(
       id: "m11",
       categories: ["c6"],
@@ -123,7 +128,8 @@ const dummyMeals = [
       image: "assets/category/tatlilar.jpg",
       duration: 20,
       affordability: Affordability.pricey,
-      detail: 'Şekerpare, şerbetli bir tatlıdır. Hamuru un, tereyağı ve pudra şekeri gibi malzemelerin karıştırılmasıyla hazırlanır. Şerbeti ise su, şeker ve limon suyu gibi malzemelerin karıştırılmasıyla hazırlanır.'),
+      detail:
+          'Şekerpare, şerbetli bir tatlıdır. Hamuru un, tereyağı ve pudra şekeri gibi malzemelerin karıştırılmasıyla hazırlanır. Şerbeti ise su, şeker ve limon suyu gibi malzemelerin karıştırılmasıyla hazırlanır.'),
   Meal(
       id: "m12",
       categories: ["c6"],
@@ -131,7 +137,8 @@ const dummyMeals = [
       image: "assets/category/tatlilar.jpg",
       duration: 5,
       affordability: Affordability.affordable,
-      detail: 'Lokma, kızartılmış hamur tatlısıdır. Hamuru un, maya ve şeker gibi malzemelerin karıştırılmasıyla hazırlanır. '),
+      detail:
+          'Lokma, kızartılmış hamur tatlısıdır. Hamuru un, maya ve şeker gibi malzemelerin karıştırılmasıyla hazırlanır. '),
   Meal(
       id: "m13",
       categories: ["c7"],
@@ -139,7 +146,8 @@ const dummyMeals = [
       image: "assets/category/meyveler.jpg",
       duration: 10,
       affordability: Affordability.pricey,
-      detail: 'Muz, elma, üzüm, kiraz, armut kullanılarak yapılan klasik meyve tabağı.'),
+      detail:
+          'Muz, elma, üzüm, kiraz, armut kullanılarak yapılan klasik meyve tabağı.'),
   Meal(
       id: "m14",
       categories: ["c7"],
@@ -147,7 +155,8 @@ const dummyMeals = [
       image: "assets/category/meyveler.jpg",
       duration: 10,
       affordability: Affordability.luxurious,
-      detail: 'Ejder meyvesi, çarkıfelek, muz, nar, bal, elma kullanılarak yapılan lüks meyve tabağı.'),
+      detail:
+          'Ejder meyvesi, çarkıfelek, muz, nar, bal, elma kullanılarak yapılan lüks meyve tabağı.'),
   Meal(
       id: "m15",
       categories: ["c8"],
@@ -165,19 +174,21 @@ const dummyMeals = [
       affordability: Affordability.affordable,
       detail: 'Klasik Fanta'),
   Meal(
-      id: "m17",
-      categories: ["c9"],
-      title: "Tuborg Gold",
-      image: "assets/category/alkolluicecekler.jpg",
-      duration: 1,
-      affordability: Affordability.pricey,
-      detail: 'Tuborg Gold, Carlsberg Group tarafından üretilen bir biradır. Türkiye’de yaygın olarak tüketilir.'),
-  Meal(
       id: "m18",
       categories: ["c9"],
       title: "Beylerbeyi Göbek Rakı",
-      image: "assets/category/alkolluicecekler.jpg",
+      image: "assets/category/rakilar.jpg",
       duration: 1,
       affordability: Affordability.luxurious,
-      detail: 'Beylerbeyi göbek rakı, Türkiye’de üretilen bir rakı markasıdır. Türk mutfağında yaygın olarak tüketilir.'),
+      detail:
+          'Beylerbeyi göbek rakı, Türkiye’de üretilen bir rakı markasıdır. Türk mutfağında yaygın olarak tüketilir.'),
+  Meal(
+      id: "m17",
+      categories: ["c10"],
+      title: "Tuborg Gold",
+      image: "assets/category/biralar.jpg",
+      duration: 1,
+      affordability: Affordability.pricey,
+      detail:
+          'Tuborg Gold, Carlsberg Group tarafından üretilen bir biradır. Türkiye’de yaygın olarak tüketilir.'),
 ];
