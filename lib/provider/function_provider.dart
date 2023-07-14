@@ -78,7 +78,11 @@ class FunctionProvider with ChangeNotifier {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  TextButton(onPressed: () {}, child: const Text("Cancel")),
+                  TextButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      child: const Text("Cancel")),
                   TextButton(
                     onPressed: () {
                       Navigator.of(context).pop();

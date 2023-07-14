@@ -1,11 +1,11 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sertan/pages/login_page.dart';
-import 'package:flutter/cupertino.dart';
+
 import '../provider/city_and_district_provider.dart';
-import '../widgets/text_input.dart';
 import '../provider/function_provider.dart';
-import 'login_page.dart';
+import '../widgets/text_input.dart';
 
 class RegisterPageView extends StatefulWidget {
   RegisterPageView({
@@ -20,7 +20,6 @@ class RegisterPageView extends StatefulWidget {
 class _RegisterPageViewState extends State<RegisterPageView> {
   TextEditingController nameController = TextEditingController();
   TextEditingController surnameController = TextEditingController();
-
   TextEditingController phoneRegisterController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordRegisterController = TextEditingController();
