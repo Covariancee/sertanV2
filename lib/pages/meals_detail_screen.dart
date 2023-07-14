@@ -32,57 +32,46 @@ class _MealDetailsScreenState extends State<MealDetailsScreen> {
           height: double.infinity,
           width: double.infinity,
           decoration: const BoxDecoration(color: Color.fromARGB(180, 0, 0, 0)),
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Column(
-                children: [
-                  Image.asset(widget.meal.image),
-                  const SizedBox(
-                    height: 16,
-                  ),
-                  Text(
-                    widget.meal.title,
-                    style: const TextStyle(
-                        fontSize: 20, fontWeight: FontWeight.bold),
-                  ),
-                  const SizedBox(
-                    height: 16,
-                  ),
-                  Text(
-                    widget.meal.detail,
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(fontSize: 18),
-                  ),
-                  const SizedBox(
-                    height: 16,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      const Text(
-                        'Fiyat TL',
-                        style: TextStyle(fontSize: 15),
-                      ),
-                      Text(
-                        date.toString(),
-                        style: TextStyle(fontSize: 15),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 16),
-                  Align(
-                    alignment: Alignment.bottomCenter,
-                    child: Icon(
-                      Icons.favorite,
-                      size: 50,
+          child: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Image.asset(widget.meal.image),
+                const SizedBox(
+                  height: 16,
+                ),
+                Column(
+                  children: [
+                    Text(
+                      widget.meal.title,
+                      style: const TextStyle(
+                          fontSize: 20, fontWeight: FontWeight.bold),
                     ),
-                  )
-                ],
-              ),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    Text(
+                      widget.meal.detail,
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(fontSize: 18),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 16,
+                ),
+                const Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Icon(
+                    Icons.favorite,
+                    size: 50,
+                  ),
+                )
+              ],
             ),
           ),
-        )
+        ),
       ]),
     );
   }
