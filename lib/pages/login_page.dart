@@ -18,8 +18,8 @@ class _LoginPageViewState extends State<LoginPageView> {
     TextEditingController phoneLoginController = TextEditingController();
     TextEditingController passwordLoginController = TextEditingController();
     void authLogin() {
-      if (phoneLoginController.text == "+90 (505) 028-93-94" &&
-          passwordLoginController.text == "aa") {
+      if (phoneLoginController.text == "+90 (555) 555-55-55" &&
+          passwordLoginController.text == "123456") {
         Navigator.of(context)
             .push(MaterialPageRoute(builder: (context) => CategoryPageView()));
       }

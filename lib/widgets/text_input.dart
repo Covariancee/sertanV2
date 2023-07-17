@@ -193,7 +193,7 @@ class _PasswordInputState extends State<PasswordInput> {
         if (value == null || value.isEmpty) {
           return 'cannot be empty';
         }
-        if (value.length <= 6) {
+        if (value.length <= 5) {
           return 'must be longer than 6';
         }
         if (value.length >= 17) {
