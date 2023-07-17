@@ -66,11 +66,7 @@ class _RegisterPageViewState extends State<RegisterPageView> {
                     child: CupertinoButton(
                       padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
                       borderRadius: BorderRadius.circular(8.0),
-<<<<<<< HEAD
-                      color: Colors.black12,
-=======
                       color: Colors.blue,
->>>>>>> c0fef433b39f03dc6bef75cd54a96c5852800d01
                       onPressed: () => FunctionProvider(
                         context: context,
                         pickerText:
@@ -113,11 +109,7 @@ class _RegisterPageViewState extends State<RegisterPageView> {
                     visible: visible,
                     child: CupertinoButton(
                       padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
-<<<<<<< HEAD
-                      color: Colors.black12,
-=======
                       color: Colors.blue,
->>>>>>> c0fef433b39f03dc6bef75cd54a96c5852800d01
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -152,11 +144,7 @@ class _RegisterPageViewState extends State<RegisterPageView> {
                           child: Checkbox(
                               value: cityProvider.isAccepted,
                               onChanged: (value) {
-<<<<<<< HEAD
-                                cityProvider.termsAccepted(value!);
-=======
-                                cityProvider.setAccepted(value!);
->>>>>>> c0fef433b39f03dc6bef75cd54a96c5852800d01
+                                value = cityProvider.isAccepted;
                               })),
                       Expanded(
                           child: TextButton(
