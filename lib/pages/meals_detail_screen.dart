@@ -67,7 +67,8 @@ class _MealDetailsScreenState extends State<MealDetailsScreen> {
                     Icons.favorite,
                     size: 50,
                   ),
-                )
+                ),
+                
               ],
             ),
           ),

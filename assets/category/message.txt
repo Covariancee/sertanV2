@@ -144,7 +144,7 @@ class _RegisterPageViewState extends State<RegisterPageView> {
                           child: Checkbox(
                               value: cityProvider.isAccepted,
                               onChanged: (value) {
-                                cityProvider.setAccepted(value!);
+                                value = cityProvider.isAccepted;
                               })),
                       Expanded(
                           child: TextButton(
