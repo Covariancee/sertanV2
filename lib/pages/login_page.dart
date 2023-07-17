@@ -33,38 +33,45 @@ class _LoginPageViewState extends State<LoginPageView> {
                 fit: BoxFit.cover)),
         child: Form(
           key: widget._formKey,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 35),
-            child:
-                Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-              SizedBox(width: 250, child: Image.asset("assets/vtz_logo.png")),
-              PhoneInput(controller: phoneLoginController),
-              PasswordInput(controller: passwordLoginController),
-              const SizedBox(height: 15),
-              SizedBox(
-                width: 145,
-                child: ElevatedButton(
-                    onPressed: () {
-                      if (widget._formKey.currentState!.validate()) {
-                        print(
-                            "ID: ${phoneLoginController.text} Password: ${passwordLoginController.text}");
-                        authLogin();
-                      }
-                    },
-                    child: const Text("Login")),
+          child: ListView(
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 35),
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SizedBox(
+                          width: 250,
+                          child: Image.asset("assets/vtz_logo.png")),
+                      PhoneInput(controller: phoneLoginController),
+                      PasswordInput(controller: passwordLoginController),
+                      const SizedBox(height: 15),
+                      SizedBox(
+                        width: 145,
+                        child: ElevatedButton(
+                            onPressed: () {
+                              if (widget._formKey.currentState!.validate()) {
+                                print(
+                                    "ID: ${phoneLoginController.text} Password: ${passwordLoginController.text}");
+                                authLogin();
+                              }
+                            },
+                            child: const Text("Login")),
+                      ),
+                      TextButton(
+                          onPressed: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => RegisterPageView()));
+                          },
+                          child: const Text(
+                            "Register",
+                            style: TextStyle(
+                                color: Colors.white,
+                                decoration: TextDecoration.underline),
+                          ))
+                    ]),
               ),
-              TextButton(
-                  onPressed: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => RegisterPageView()));
-                  },
-                  child: const Text(
-                    "Register",
-                    style: TextStyle(
-                        color: Colors.white,
-                        decoration: TextDecoration.underline),
-                  ))
-            ]),
+            ],
           ),
         ),
       ),
