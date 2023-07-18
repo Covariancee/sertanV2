@@ -1,34 +1,39 @@
 import '../models/category.dart';
 import '../models/meals.dart';
 
-const availableCategories = {
-  Category(id: "c1", title: "Mezeler", image: "assets/category/mezeler.jpg"),
-  Category(
-      id: "c2", title: "Salatalar", image: "assets/category/salatalar.jpg"),
-  Category(
-      id: "c3", title: "Sakatatlar", image: "assets/category/sakatatlar.jpg"),
-  Category(
-      id: "c4",
-      title: "Ara Sıcaklar",
-      image: "assets/category/arasicaklar.jpg"),
-  Category(
-      id: "c5",
-      title: "Ana Yemekler",
-      image: "assets/category/anayemekler.jpg"),
-  Category(id: "c6", title: "Tatlılar", image: "assets/category/tatlilar.jpg"),
-  Category(id: "c7", title: "Meyveler", image: "assets/category/meyveler.jpg"),
-  Category(
-      id: "c8",
-      title: "Alkolsüz İçecekler",
-      image: "assets/category/alkolsuzicecekler.jpg"),
-  Category(id: "c9", title: "Rakılar", image: "assets/category/rakilar.jpg"),
-  Category(id: "c10", title: "Biralar", image: "assets/category/biralar.jpg"),
-  Category(
-      id: "c11",
-      title: "Atıştırmalıklar",
-      image: "assets/category/atistirmaliklar.jpg"),
-  Category(id: "c12", title: "Balıklar", image: "assets/category/baliklar.jpg"),
-};
+const availableCategories = [
+  {
+    Category(id: "c1", title: "Mezeler", image: "assets/category/mezeler.jpg"),
+    Category(
+        id: "c2", title: "Salatalar", image: "assets/category/salatalar.jpg"),
+    Category(
+        id: "c3", title: "Sakatatlar", image: "assets/category/sakatatlar.jpg"),
+    Category(
+        id: "c4",
+        title: "Ara Sıcaklar",
+        image: "assets/category/arasicaklar.jpg"),
+    Category(
+        id: "c5",
+        title: "Ana Yemekler",
+        image: "assets/category/anayemekler.jpg"),
+    Category(
+        id: "c6", title: "Tatlılar", image: "assets/category/tatlilar.jpg"),
+    Category(
+        id: "c7", title: "Meyveler", image: "assets/category/meyveler.jpg"),
+    Category(
+        id: "c8",
+        title: "Alkolsüz İçecekler",
+        image: "assets/category/alkolsuzicecekler.jpg"),
+    Category(id: "c9", title: "Rakılar", image: "assets/category/rakilar.jpg"),
+    Category(id: "c10", title: "Biralar", image: "assets/category/biralar.jpg"),
+    Category(
+        id: "c11",
+        title: "Atıştırmalıklar",
+        image: "assets/category/atistirmaliklar.jpg"),
+    Category(
+        id: "c12", title: "Balıklar", image: "assets/category/baliklar.jpg"),
+  }
+];
 
 const dummyMeals = [
   Meal(
