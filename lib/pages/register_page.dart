@@ -8,6 +8,7 @@ import 'package:sertan/pages/terms_page.dart';
 import '../controller/function_controller.dart';
 import '../provider/city_and_district_provider.dart';
 import '../widgets/text_input.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
 class RegisterPageView extends StatefulWidget {
   RegisterPageView({
@@ -26,6 +27,17 @@ class _RegisterPageViewState extends State<RegisterPageView> {
   TextEditingController phoneRegisterController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordRegisterController = TextEditingController();
+  var maskFormatter = MaskTextInputFormatter(
+      mask: '+90 (###) ###-##-##',
+      filter: {"#": RegExp(r'[0-9]')},
+      type: MaskAutoCompletionType.lazy);
+  bool _validateEmail(String value) {
+    // Regular expression for email validation
+    final RegExp emailRegex = RegExp(
+      r'^[\w-]+(\.[\w-]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,})$',
+    );
+    return emailRegex.hasMatch(value);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,17 +62,90 @@ class _RegisterPageViewState extends State<RegisterPageView> {
                 Column(mainAxisAlignment: MainAxisAlignment.center, children: [
                   SizedBox(
                       width: 200, child: Image.asset("assets/vtz_logo.png")),
-                  NameInput(
-                    controller: nameController,
-                  ),
-                  SurnameInput(
-                    controller: surnameController,
-                  ),
-                  PhoneInput(
-                    controller: phoneRegisterController,
-                  ),
-                  EmailInput(controller: emailController),
-                  PasswordInput(controller: passwordRegisterController),
+                  DefaultInput(
+                      controller: nameController,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'cannot be empty';
+                        }
+                        if (value.length <= 1) {
+                          return 'must be longer than 2';
+                        }
+                        if (value.length >= 17) {
+                          return 'too long';
+                        }
+                        {
+                          return null;
+                        }
+                      },
+                      inputText: "Name"),
+                  DefaultInput(
+                      controller: surnameController,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'cannot be empty';
+                        }
+                        if (value.length <= 1) {
+                          return 'must be longer than 2';
+                        }
+                        if (value.length >= 17) {
+                          return 'too long';
+                        }
+                        {
+                          return null;
+                        }
+                      },
+                      inputText: "Surname"),
+                  DefaultInput(
+                      controller: phoneRegisterController,
+                      keyboardType: TextInputType.phone,
+                      //maskFormatters: maskFormatter,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter a valid phone number';
+                        }
+                        if (value.length != 19) {
+                          return 'too short';
+                        } else {
+                          return null;
+                        }
+                      },
+                      inputText: "Phone"),
+                  DefaultInput(
+                      controller: emailController,
+                      keyboardType: TextInputType.emailAddress,
+                      //maskFormatters: maskFormatter,
+                      validator: (value) {
+                        if (value == null ||
+                            value.isEmpty ||
+                            !_validateEmail(value)) {
+                          return 'Please enter a valid email';
+                        }
+                        if (value.length >= 35) {
+                          return 'Please enter a valid email';
+                        } else {
+                          return null;
+                        }
+                      },
+                      inputText: "E-mail"),
+                  DefaultInput(
+                      controller: passwordRegisterController,
+                      //maskFormatters: maskFormatter,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'cannot be empty';
+                        }
+                        if (value.length <= 5) {
+                          return 'must be longer than 6';
+                        }
+                        if (value.length >= 17) {
+                          return 'too long';
+                        }
+                        {
+                          return null;
+                        }
+                      },
+                      inputText: "Password"),
                   Padding(
                     padding: const EdgeInsets.only(top: 24),
                     child: CupertinoButton(

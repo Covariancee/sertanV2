@@ -28,14 +28,23 @@ _buildBody(BuildContext context) {
         childAspectRatio: 1,
         crossAxisSpacing: 20,
         mainAxisSpacing: 20),
-    children: [
-      for (final category in availableCategories){}
-        CategoryCard(
-          category: category,
-          onSelectCategory: () {
-            selectCategory(context, category);
-          },
-        )
-    ],
+    itemCount: availableCategories.length,
+    itemBuilder: (BuildContext context, int index) {
+      return CategoryCard(
+        category: availableCategories[index],
+        onSelectCategory: () {
+          selectCategory(context, availableCategories[index]);
+        },
+        // children: [
+        //   for (final category in availableCategories)
+        //     CategoryCard(
+        //       category: category,
+        //       onSelectCategory: () {
+        //         selectCategory(context, category);
+        //       },
+        //     )
+        // ],
+      );
+    },
   );
 }

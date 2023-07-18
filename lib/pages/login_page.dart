@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sertan/pages/category_page.dart';
 import 'package:sertan/pages/register_page.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
 import '../widgets/text_input.dart';
 
@@ -13,6 +14,10 @@ class LoginPageView extends StatefulWidget {
 }
 
 class _LoginPageViewState extends State<LoginPageView> {
+  var maskFormatter = MaskTextInputFormatter(
+      mask: '+90 (###) ###-##-##',
+      filter: {"#": RegExp(r'[0-9]')},
+      type: MaskAutoCompletionType.lazy);
   @override
   Widget build(BuildContext context) {
     TextEditingController phoneLoginController = TextEditingController();
@@ -46,7 +51,20 @@ class _LoginPageViewState extends State<LoginPageView> {
                         SizedBox(
                             width: 250,
                             child: Image.asset("assets/vtz_logo.png")),
-                        PhoneInput(controller: phoneLoginController),
+                        DefaultInput(
+                            controller: phoneLoginController,
+                            keyboardType: TextInputType.phone,
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Please enter a valid phone number';
+                              }
+                              if (value.length != 19) {
+                                return 'too short';
+                              } else {
+                                return null;
+                              }
+                            },
+                            inputText: "Phone"),
                         PasswordInput(controller: passwordLoginController),
                         const SizedBox(height: 15),
                         SizedBox(
