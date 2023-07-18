@@ -1,9 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:sertan/city_and_district_list.dart';
-
-import '../provider/city_and_district_provider.dart';
 
 class FunctionProvider {
   BuildContext context;
