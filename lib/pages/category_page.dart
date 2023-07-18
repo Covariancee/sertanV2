@@ -35,15 +35,6 @@ _buildBody(BuildContext context) {
         onSelectCategory: () {
           selectCategory(context, availableCategories[index]);
         },
-        // children: [
-        //   for (final category in availableCategories)
-        //     CategoryCard(
-        //       category: category,
-        //       onSelectCategory: () {
-        //         selectCategory(context, category);
-        //       },
-        //     )
-        // ],
       );
     },
   );

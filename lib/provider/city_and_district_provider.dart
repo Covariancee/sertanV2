@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:sertan/city_and_district_list.dart';
 
@@ -7,29 +9,29 @@ class CityDistrictProvider with ChangeNotifier {
   bool _isAccepted = false;
 
   bool _isCitySelected = false;
+  bool _isDistrictSelected = false;
 
   String get selectedCity => _selectedCity;
 
   String get selectedDistrict => _selectedDistrict;
 
   bool get isCitySelected => _isCitySelected;
+  bool get isDistrictSelected => _isDistrictSelected;
 
   bool get isAccepted => _isAccepted;
 
   set setSelectedCity(String city) {
     _selectedCity = city;
-    if (_selectedCity == cities[0]) {
-      _isCitySelected = false;
-    } else {
-      _isCitySelected = true;
-    }
+    _isCitySelected = true;
+    _isDistrictSelected = false;
+    _selectedDistrict = "No district choosen";
 
     notifyListeners();
   }
 
   set setSelectedDistrict(String district) {
     _selectedDistrict = district;
-
+    _isDistrictSelected = true;
     notifyListeners();
   }
 

@@ -4,8 +4,10 @@ import 'package:provider/provider.dart';
 import 'package:sertan/city_and_district_list.dart';
 import 'package:sertan/pages/login_page.dart';
 import 'package:sertan/pages/terms_page.dart';
+import 'package:sertan/widgets/alert_dialog.dart';
 
 import '../controller/function_controller.dart';
+import '../controller/validators.dart';
 import '../provider/city_and_district_provider.dart';
 import '../widgets/text_input.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
@@ -31,13 +33,6 @@ class _RegisterPageViewState extends State<RegisterPageView> {
       mask: '+90 (###) ###-##-##',
       filter: {"#": RegExp(r'[0-9]')},
       type: MaskAutoCompletionType.lazy);
-  bool _validateEmail(String value) {
-    // Regular expression for email validation
-    final RegExp emailRegex = RegExp(
-      r'^[\w-]+(\.[\w-]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,})$',
-    );
-    return emailRegex.hasMatch(value);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -64,87 +59,23 @@ class _RegisterPageViewState extends State<RegisterPageView> {
                       width: 200, child: Image.asset("assets/vtz_logo.png")),
                   DefaultInput(
                       controller: nameController,
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'cannot be empty';
-                        }
-                        if (value.length <= 1) {
-                          return 'must be longer than 2';
-                        }
-                        if (value.length >= 17) {
-                          return 'too long';
-                        }
-                        {
-                          return null;
-                        }
-                      },
+                      validator: nameSurnameValidator,
                       inputText: "Name"),
                   DefaultInput(
                       controller: surnameController,
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'cannot be empty';
-                        }
-                        if (value.length <= 1) {
-                          return 'must be longer than 2';
-                        }
-                        if (value.length >= 17) {
-                          return 'too long';
-                        }
-                        {
-                          return null;
-                        }
-                      },
+                      validator: nameSurnameValidator,
                       inputText: "Surname"),
-                  DefaultInput(
-                      controller: phoneRegisterController,
-                      keyboardType: TextInputType.phone,
-                      //maskFormatters: maskFormatter,
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Please enter a valid phone number';
-                        }
-                        if (value.length != 19) {
-                          return 'too short';
-                        } else {
-                          return null;
-                        }
-                      },
-                      inputText: "Phone"),
+                  PhoneInput(controller: phoneRegisterController),
                   DefaultInput(
                       controller: emailController,
                       keyboardType: TextInputType.emailAddress,
                       //maskFormatters: maskFormatter,
-                      validator: (value) {
-                        if (value == null ||
-                            value.isEmpty ||
-                            !_validateEmail(value)) {
-                          return 'Please enter a valid email';
-                        }
-                        if (value.length >= 35) {
-                          return 'Please enter a valid email';
-                        } else {
-                          return null;
-                        }
-                      },
+                      validator: emailValidator,
                       inputText: "E-mail"),
                   DefaultInput(
                       controller: passwordRegisterController,
                       //maskFormatters: maskFormatter,
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'cannot be empty';
-                        }
-                        if (value.length <= 5) {
-                          return 'must be longer than 6';
-                        }
-                        if (value.length >= 17) {
-                          return 'too long';
-                        }
-                        {
-                          return null;
-                        }
-                      },
+                      validator: passwordValidator,
                       inputText: "Password"),
                   Padding(
                     padding: const EdgeInsets.only(top: 24),
@@ -167,10 +98,6 @@ class _RegisterPageViewState extends State<RegisterPageView> {
                         }),
                         confirmFunc: (value) {
                           cityProvider.setSelectedCity = cities[value];
-                          if (districts[cityProvider.selectedCity] != null) {
-                            cityProvider.setSelectedDistrict =
-                                districts[cityProvider.selectedCity]![0];
-                          }
                         },
                       ).showPicker(),
                       child: Row(
@@ -246,6 +173,16 @@ class _RegisterPageViewState extends State<RegisterPageView> {
                         if (widget._formKey.currentState!.validate()) {
                           print(
                               "ID: ${phoneRegisterController.text} Name Surname: ${nameController.text} ${surnameController.text} Password: ${passwordRegisterController.text} City&District: ${cityProvider.selectedCity} ${cityProvider.selectedDistrict} Email: ${emailController.text}");
+                        }
+                        if (cityProvider.isCitySelected == false ||
+                            cityProvider.isDistrictSelected == false) {
+                          showDialog(
+                              context: context, builder: ((_) => AlertForm()));
+                        }
+                        if (cityProvider.isAccepted == false) {
+                          showDialog(
+                              context: context, builder: ((_) => AlertForm()));
+                        } else {
                           Navigator.of(context).pop(MaterialPageRoute(
                               builder: (context) => LoginPageView()));
                         }
