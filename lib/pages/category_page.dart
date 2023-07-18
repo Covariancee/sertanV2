@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import '../controller/category_controller.dart';
 import '../data/data.dart';
 import '../provider/category_provider.dart';
 
@@ -21,21 +21,30 @@ class _CategoryPageViewState extends State<CategoryPageView> {
 }
 
 _buildBody(BuildContext context) {
-  return GridView(
+  return GridView.builder(
     padding: const EdgeInsets.all(20),
     gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
         childAspectRatio: 1,
         crossAxisSpacing: 20,
         mainAxisSpacing: 20),
-    children: [
-      for (final category in availableCategories)
-        CategoryCard(
-          category: category,
-          onSelectCategory: () {
-            selectCategory(context, category);
-          },
-        )
-    ],
+    itemCount: availableCategories.length,
+    itemBuilder: (BuildContext context, int index) {
+      return CategoryCard(
+        category: availableCategories[index],
+        onSelectCategory: () {
+          selectCategory(context, availableCategories[index]);
+        },
+        // children: [
+        //   for (final category in availableCategories)
+        //     CategoryCard(
+        //       category: category,
+        //       onSelectCategory: () {
+        //         selectCategory(context, category);
+        //       },
+        //     )
+        // ],
+      );
+    },
   );
 }

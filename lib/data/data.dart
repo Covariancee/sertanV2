@@ -1,7 +1,7 @@
 import '../models/category.dart';
 import '../models/meals.dart';
 
-const availableCategories = {
+const availableCategories = [
   Category(id: "c1", title: "Mezeler", image: "assets/category/mezeler.jpg"),
   Category(
       id: "c2", title: "Salatalar", image: "assets/category/salatalar.jpg"),
@@ -28,7 +28,7 @@ const availableCategories = {
       title: "Atıştırmalıklar",
       image: "assets/category/atistirmaliklar.jpg"),
   Category(id: "c12", title: "Balıklar", image: "assets/category/baliklar.jpg"),
-};
+];
 
 const dummyMeals = [
   Meal(
