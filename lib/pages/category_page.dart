@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../controller/category_controller.dart';
 import '../data/data.dart';
 import '../provider/category_provider.dart';
@@ -22,7 +21,7 @@ class _CategoryPageViewState extends State<CategoryPageView> {
 }
 
 _buildBody(BuildContext context) {
-  return GridView(
+  return GridView.builder(
     padding: const EdgeInsets.all(20),
     gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,

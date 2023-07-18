@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-
-import '../data/data.dart';
 import '../models/category.dart';
-import '../pages/meals_screen.dart';
+// import '../data/data.dart';
+// import '../pages/meals_screen.dart';
 
 // class CategoryProvider extends ChangeNotifier {
 //   void _selectCategory(BuildContext context, Category category) {
