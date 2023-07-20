@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
-import '../city_and_district_list.dart';
+import '../data/city_and_district_list.dart';
 import '../pages/login_page.dart';
 import '../widgets/alert_dialog.dart';
 
