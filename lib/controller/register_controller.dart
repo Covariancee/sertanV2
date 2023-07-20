@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
-
+import '../city_and_district_list.dart';
 import '../pages/login_page.dart';
 import '../widgets/alert_dialog.dart';
 
@@ -31,3 +31,19 @@ var maskFormatter = MaskTextInputFormatter(
     mask: '+90 (###) ###-##-##',
     filter: {"#": RegExp(r'[0-9]')},
     type: MaskAutoCompletionType.lazy);
+
+class ListGenerate {
+  // ignore: non_constant_identifier_names
+  GenerateList(cityOrDistrict) {
+    return List<Widget>.generate(cities.length, (index) {
+      return Center(
+        child: Text(
+          cityOrDistrict[index],
+
+          //districts[cityProvider.selectedCity]![index],
+          style: const TextStyle(fontSize: 20),
+        ),
+      );
+    });
+  }
+}

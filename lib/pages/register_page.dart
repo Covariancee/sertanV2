@@ -1,11 +1,12 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sertan/city_and_district_list.dart';
 import 'package:sertan/pages/login_page.dart';
 import 'package:sertan/pages/terms_page.dart';
+import 'package:sertan/widgets/custom_cupertino_button.dart';
 
-import '../controller/function_controller.dart';
 import '../controller/register_controller.dart';
 import '../controller/validators.dart';
 import '../provider/city_and_district_provider.dart';
@@ -70,92 +71,51 @@ class _RegisterPageViewState extends State<RegisterPageView> {
                             inputText: "Password"),
                         Padding(
                           padding: const EdgeInsets.only(top: 24),
-                          child: CupertinoButton(
-                            padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
-                            borderRadius: BorderRadius.circular(8.0),
-                            color: Colors.black12,
-                            onPressed: () => FunctionProvider(
-                              context: context,
-                              pickerText:
-                                  List<Widget>.generate(cities.length, (index) {
-                                return Center(
-                                  child: Text(
-                                    cities[index],
-                                    style: const TextStyle(fontSize: 20),
-                                  ),
-                                );
-                              }),
-                              confirmFunc: (value) {
-                                cityProvider.setSelectedCity = cities[value];
-                              },
-                            ).showPicker(),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  textAlign: TextAlign.start,
-                                  cityProvider.selectedCity,
-                                  style: const TextStyle(color: Colors.white),
-                                ),
-                                const Icon(
-                                  Icons.keyboard_arrow_down,
-                                  color: Colors.white,
-                                ),
-                              ],
-                            ),
-                          ),
+                          child: CustomCupertinoButton(
+                              selectedAny: cityProvider.selectedCity,
+                              generateListVar: cities,
+                              setSelectedAny: (value) =>
+                                  cityProvider.setSelectedCity = cities[value]),
                         ),
                         const SizedBox(height: 24),
                         Visibility(
-                          visible: visible,
-                          child: CupertinoButton(
-                            padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
-                            color: Colors.black12,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  cityProvider.selectedDistrict,
-                                  style: const TextStyle(color: Colors.white),
-                                ),
-                                const Icon(Icons.keyboard_arrow_down)
-                              ],
-                            ),
-                            onPressed: () => FunctionProvider(
-                              context: context,
-                              pickerText: List<Widget>.generate(
-                                  districts.length, (value) {
-                                return Center(
-                                  child: Text(
-                                    districts[cityProvider.selectedCity]![
-                                        value],
-                                    style: const TextStyle(fontSize: 20),
-                                  ),
-                                );
-                              }),
-                              confirmFunc: (value) => cityProvider
-                                      .setSelectedDistrict =
-                                  districts[cityProvider.selectedCity]![value],
-                            ).showPicker(),
-                          ),
-                        ),
+                            visible: visible,
+                            child: CustomCupertinoButton(
+                                selectedAny: cityProvider.selectedDistrict,
+                                generateListVar:
+                                    districts[cityProvider.selectedCity],
+                                setSelectedAny: (value) =>
+                                    cityProvider.setSelectedDistrict =
+                                        districts[cityProvider.selectedCity]![
+                                            value])),
                         const SizedBox(height: 24),
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Expanded(
-                                child: Checkbox(
-                                    value: cityProvider.isAccepted,
-                                    onChanged: (value) {
-                                      cityProvider.termsAccepted(value!);
-                                    })),
-                            Expanded(
-                                child: TextButton(
-                              child: Text('Users terms...'),
-                              onPressed: () {
-                                Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) => const TermsPage()));
-                              },
-                            )),
+                            Checkbox(
+                                value: cityProvider.isAccepted,
+                                onChanged: (value) {
+                                  cityProvider.termsAccepted(value!);
+                                }),
+                            RichText(
+                              text: TextSpan(
+                                text: 'Accept ',
+                                style: TextStyle(fontSize: 15),
+                                children: <TextSpan>[
+                                  TextSpan(
+                                    text: 'user terms',
+                                    style: TextStyle(color: Colors.blue),
+                                    recognizer: TapGestureRecognizer()
+                                      ..onTap = () {
+                                        Navigator.of(context).push(
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    const TermsPage()));
+                                      },
+                                  ),
+                                ],
+                              ),
+                            ),
                           ],
                         ),
                         ElevatedButton(
