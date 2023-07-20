@@ -5,8 +5,8 @@ import 'package:provider/provider.dart';
 import 'package:sertan/city_and_district_list.dart';
 import 'package:sertan/pages/login_page.dart';
 import 'package:sertan/pages/terms_page.dart';
+import 'package:sertan/widgets/custom_cupertino_button.dart';
 
-import '../controller/function_controller.dart';
 import '../controller/register_controller.dart';
 import '../controller/validators.dart';
 import '../provider/city_and_district_provider.dart';
@@ -71,59 +71,23 @@ class _RegisterPageViewState extends State<RegisterPageView> {
                             inputText: "Password"),
                         Padding(
                           padding: const EdgeInsets.only(top: 24),
-                          child: CupertinoButton(
-                            padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
-                            borderRadius: BorderRadius.circular(8.0),
-                            color: Colors.black12,
-                            onPressed: () => FunctionProvider(
-                              context: context,
-                              pickerText: ListGenerate().GenerateList(cities),
-                              confirmFunc: (value) {
-                                cityProvider.setSelectedCity = cities[value];
-                              },
-                            ).showPicker(),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  textAlign: TextAlign.start,
-                                  cityProvider.selectedCity,
-                                  style: const TextStyle(color: Colors.white),
-                                ),
-                                const Icon(
-                                  Icons.keyboard_arrow_down,
-                                  color: Colors.white,
-                                ),
-                              ],
-                            ),
-                          ),
+                          child: CustomCupertinoButton(
+                              selectedAny: cityProvider.selectedCity,
+                              generateListVar: cities,
+                              setSelectedAny: (value) =>
+                                  cityProvider.setSelectedCity = cities[value]),
                         ),
                         const SizedBox(height: 24),
                         Visibility(
-                          visible: visible,
-                          child: CupertinoButton(
-                            padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
-                            color: Colors.black12,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  cityProvider.selectedDistrict,
-                                  style: const TextStyle(color: Colors.white),
-                                ),
-                                const Icon(Icons.keyboard_arrow_down)
-                              ],
-                            ),
-                            onPressed: () => FunctionProvider(
-                              context: context,
-                              pickerText: ListGenerate().GenerateList(
-                                  districts[cityProvider.selectedCity]!),
-                              confirmFunc: (value) => cityProvider
-                                      .setSelectedDistrict =
-                                  districts[cityProvider.selectedCity]![value],
-                            ).showPicker(),
-                          ),
-                        ),
+                            visible: visible,
+                            child: CustomCupertinoButton(
+                                selectedAny: cityProvider.selectedDistrict,
+                                generateListVar:
+                                    districts[cityProvider.selectedCity],
+                                setSelectedAny: (value) =>
+                                    cityProvider.setSelectedDistrict =
+                                        districts[cityProvider.selectedCity]![
+                                            value])),
                         const SizedBox(height: 24),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
