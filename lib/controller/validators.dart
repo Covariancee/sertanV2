@@ -57,4 +57,3 @@ dynamic passwordValidator = (value) {
     return null;
   }
 };
-

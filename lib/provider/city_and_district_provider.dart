@@ -1,7 +1,4 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
-import 'package:sertan/city_and_district_list.dart';
 
 class CityDistrictProvider with ChangeNotifier {
   String _selectedCity = "No city choosen";

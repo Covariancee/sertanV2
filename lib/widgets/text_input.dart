@@ -13,7 +13,7 @@ class DefaultInput extends StatefulWidget {
   final TextInputType? keyboardType;
   //final maskFormatters;
   final String inputText;
-  
+
   @override
   State<DefaultInput> createState() => _DefaultInputState();
 }
@@ -75,7 +75,7 @@ class _PhoneInputState extends State<PhoneInput> {
       )),
     );
   }
-} 
+}
 
 // class PasswordInput extends StatefulWidget {
 //   const PasswordInput({
