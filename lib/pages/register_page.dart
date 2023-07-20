@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sertan/city_and_district_list.dart';
@@ -76,15 +77,7 @@ class _RegisterPageViewState extends State<RegisterPageView> {
                             color: Colors.black12,
                             onPressed: () => FunctionProvider(
                               context: context,
-                              pickerText:
-                                  List<Widget>.generate(cities.length, (index) {
-                                return Center(
-                                  child: Text(
-                                    cities[index],
-                                    style: const TextStyle(fontSize: 20),
-                                  ),
-                                );
-                              }),
+                              pickerText: ListGenerate().GenerateList(cities),
                               confirmFunc: (value) {
                                 cityProvider.setSelectedCity = cities[value];
                               },
@@ -123,16 +116,8 @@ class _RegisterPageViewState extends State<RegisterPageView> {
                             ),
                             onPressed: () => FunctionProvider(
                               context: context,
-                              pickerText: List<Widget>.generate(
-                                  districts.length, (value) {
-                                return Center(
-                                  child: Text(
-                                    districts[cityProvider.selectedCity]![
-                                        value],
-                                    style: const TextStyle(fontSize: 20),
-                                  ),
-                                );
-                              }),
+                              pickerText: ListGenerate().GenerateList(
+                                  districts[cityProvider.selectedCity]!),
                               confirmFunc: (value) => cityProvider
                                       .setSelectedDistrict =
                                   districts[cityProvider.selectedCity]![value],
@@ -141,21 +126,32 @@ class _RegisterPageViewState extends State<RegisterPageView> {
                         ),
                         const SizedBox(height: 24),
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Expanded(
-                                child: Checkbox(
-                                    value: cityProvider.isAccepted,
-                                    onChanged: (value) {
-                                      cityProvider.termsAccepted(value!);
-                                    })),
-                            Expanded(
-                                child: TextButton(
-                              child: Text('Users terms...'),
-                              onPressed: () {
-                                Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) => const TermsPage()));
-                              },
-                            )),
+                            Checkbox(
+                                value: cityProvider.isAccepted,
+                                onChanged: (value) {
+                                  cityProvider.termsAccepted(value!);
+                                }),
+                            RichText(
+                              text: TextSpan(
+                                text: 'Accept ',
+                                style: TextStyle(fontSize: 15),
+                                children: <TextSpan>[
+                                  TextSpan(
+                                    text: 'user terms',
+                                    style: TextStyle(color: Colors.blue),
+                                    recognizer: TapGestureRecognizer()
+                                      ..onTap = () {
+                                        Navigator.of(context).push(
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    const TermsPage()));
+                                      },
+                                  ),
+                                ],
+                              ),
+                            ),
                           ],
                         ),
                         ElevatedButton(

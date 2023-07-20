@@ -33,9 +33,8 @@ class FunctionProvider {
                     onPressed: () {
                       confirmFunc(value);
                       Navigator.of(context).pop();
-                      // cityProvider.setSelectedCity = cities[value];
-
-                      // cityProvider.setSelectedDistrict = districts[cityProvider.selectedCity]![value];
+                     
+                     
                     },
                     child: const Text("Confirm"),
                   )
