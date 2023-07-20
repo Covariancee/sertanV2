@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+<<<<<<< HEAD
 import '../data/city_and_district_list.dart';
 import '../pages/login_page.dart';
+=======
+import 'package:provider/provider.dart';
+import 'package:sertan/models/cityanddistrict.dart';
+import 'package:sertan/models/user.dart';
+import '../city_and_district_list.dart';
+import '../provider/city_and_district_provider.dart';
+>>>>>>> b8dd565923e10697b867e40548a69f975a2cb35e
 import '../widgets/alert_dialog.dart';
 
 TextEditingController nameController = TextEditingController();
@@ -9,6 +17,12 @@ TextEditingController surnameController = TextEditingController();
 TextEditingController phoneRegisterController = TextEditingController();
 TextEditingController emailController = TextEditingController();
 TextEditingController passwordRegisterController = TextEditingController();
+
+String name = nameController.text;
+String surname = surnameController.text;
+String phoneNumber = phoneRegisterController.text;
+String email = emailController.text;
+String password = passwordRegisterController.text;
 
 dynamic isCurrentStateValid = (formKey, cityProvider) {
   if (formKey.currentState!.validate()) {
@@ -23,8 +37,17 @@ dynamic isRegisterValid = (context, cityProvider) {
   } else if (cityProvider.isAccepted == false) {
     alertDialog(context, 'Terms error');
   } else {
-    Navigator.of(context)
-        .pop(MaterialPageRoute(builder: (context) => LoginPageView()));
+    final String routeName = '/profile-page';
+
+    Navigator.pushNamed(
+      context,
+      routeName,
+      arguments: UserModel(
+          nameSurname: "$name $surname",
+          phoneNumber: phoneNumber,
+          emailAddress: email,
+          password: password),
+    );
   }
 };
 var maskFormatter = MaskTextInputFormatter(
