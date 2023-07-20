@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../controller/category_controller.dart';
 import '../data/data.dart';
-import '../provider/category_provider.dart';
+import '../widgets/category_card.dart';
 
 class CategoryPageView extends StatefulWidget {
   const CategoryPageView({super.key});

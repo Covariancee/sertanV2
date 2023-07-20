@@ -170,22 +170,22 @@ class _RegisterPageViewState extends State<RegisterPageView> {
                   ),
                   ElevatedButton(
                       onPressed: () {
-                        if (widget._formKey.currentState!.validate()) {
-                          print(
-                              "ID: ${phoneRegisterController.text} Name Surname: ${nameController.text} ${surnameController.text} Password: ${passwordRegisterController.text} City&District: ${cityProvider.selectedCity} ${cityProvider.selectedDistrict} Email: ${emailController.text}");
-                        }
-                        if (cityProvider.isCitySelected == false ||
-                            cityProvider.isDistrictSelected == false) {
-                          showDialog(
-                              context: context, builder: ((_) => AlertForm()));
-                        }
-                        if (cityProvider.isAccepted == false) {
-                          showDialog(
-                              context: context, builder: ((_) => AlertForm()));
-                        } else {
-                          Navigator.of(context).pop(MaterialPageRoute(
-                              builder: (context) => LoginPageView()));
-                        }
+                        // if (widget._formKey.currentState!.validate()) {
+                        //   print(
+                        //       "ID: ${phoneRegisterController.text} Name Surname: ${nameController.text} ${surnameController.text} Password: ${passwordRegisterController.text} City&District: ${cityProvider.selectedCity} ${cityProvider.selectedDistrict} Email: ${emailController.text}");
+                        // }
+                        // if (cityProvider.isCitySelected == false ||
+                        //     cityProvider.isDistrictSelected == false) {
+                        //   showDialog(
+                        //       context: context, builder: ((_) => AlertForm(StringalertMesage: ,)));
+                        // }
+                        // if (cityProvider.isAccepted == false) {
+                        //   showDialog(
+                        //       context: context, builder: ((_) => AlertForm()));
+                        // } else {
+                        //   Navigator.of(context).pop(MaterialPageRoute(
+                        //       builder: (context) => LoginPageView()));
+                        // }
                       },
                       child: const Text("Register")),
                   TextButton(
