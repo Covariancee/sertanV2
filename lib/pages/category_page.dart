@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:sertan/data/data.dart';
 import '../provider/category_provider.dart';
 import '../widgets/category_card.dart';
 
@@ -14,8 +15,8 @@ class _CategoryPageViewState extends State<CategoryPageView> {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
       create: (context) {
-        var model = CategoryController();
-        model.init();
+        // var model = CategoryController();
+        // model.init();
         return CategoryController();
       },
       child: Consumer<CategoryController>(builder: _buildBody),

@@ -127,8 +127,7 @@ class _RegisterPageViewState extends State<RegisterPageView> {
                             child: const Text("Register")),
                         TextButton(
                             onPressed: () {
-                              Navigator.of(context).pop(MaterialPageRoute(
-                                  builder: (context) => LoginPageView()));
+                              Navigator.pushNamed(context,"/login-page");
                             },
                             child: const Text("Login"))
                       ]),
