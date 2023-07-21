@@ -66,6 +66,7 @@ flutter:
   assets:
     - assets/city_and_district_list.json
     - assets/category/
+    - assets/
   
 
   # An image asset can refer to one or more resolution-specific "variants", see

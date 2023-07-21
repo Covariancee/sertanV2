@@ -1,21 +1,40 @@
-import 'package:flutter/material.dart';
-import 'package:sertan/data/data.dart';
+// import 'package:flutter/material.dart';
+// import 'package:provider/provider.dart';
+// import 'package:sertan/data/data.dart';
+// import 'package:sertan/models/category.dart';
+// import 'package:sertan/provider/category_provider.dart';
 
-import '../models/category.dart';
-import '../pages/meals_screen.dart';
+// import '../widgets/category_card.dart';
 
-void selectCategory(BuildContext context, Category category) {
-  final filteredMeals = dummyMeals
-      .where((meal) => meal.categories.contains(category.id))
-      .toList();
+// class ControlCategories extends StatefulWidget {
+//   const ControlCategories({super.key});
 
-  Navigator.push(
-    context,
-    MaterialPageRoute(
-      builder: (ctx) => MealsScreen(
-        meals: filteredMeals,
-        title: category.title,
-      ),
-    ),
-  );
-}
+//   @override
+//   State<ControlCategories> createState() => _ControlCategoriesState();
+// }
+
+// class _ControlCategoriesState extends State<ControlCategories> {
+  
+
+//   @override
+//   Widget build(BuildContext context) {
+//     final categoryProvider = Provider.of<CategoryController>(context);
+//     return GridView.builder(
+//       padding: const EdgeInsets.all(20),
+//       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+//           crossAxisCount: 2,
+//           childAspectRatio: 1,
+//           crossAxisSpacing: 20,
+//           mainAxisSpacing: 20),
+//       itemCount: categoryProvider.itemCount,
+//       itemBuilder: (BuildContext context, int index) {
+//         return CategoryCard(
+//           category: asd,
+//           onSelectCategory: () {
+//             categoryProvider.selectCategory(context, asd);
+//           },
+//         );
+//       },
+//     );
+//   }
+// }

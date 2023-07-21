@@ -1,24 +1,20 @@
 {
-  "iller": [
-    {
-      "il_ad": "İstanbul",
-      "ilceler": ["Beşiktaş", "Kadıköy", "Şişli", "Fatih", "Üsküdar"]
+  "cities": {
+    "0": {
+      "city": "İstanbul",
+      "districts": ["Beşiktaş", "Kadıköy", "Şişli", "Üsküdar", "Beyoğlu"]
     },
-    {
-      "il_ad": "Ankara",
-      "ilceler": ["Çankaya", "Keçiören", "Yenimahalle", "Sincan", "Gölbaşı"]
+    "1": {
+      "city": "Ankara",
+      "districts": ["Çankaya", "Kızılay", "Keçiören", "Mamak", "Etimesgut"]
     },
-    {
-      "il_ad": "İzmir",
-      "ilceler": ["Konak", "Karşıyaka", "Bornova", "Buca", "Gaziemir"]
+    "2": {
+      "city": "İzmir",
+      "districts": ["Bornova", "Konak", "Karşıyaka", "Gaziemir", "Buca"]
     },
-    {
-      "il_ad": "Bursa",
-      "ilceler": ["Osmangazi", "Nilüfer", "Yıldırım", "Gürsu", "Gemlik"]
-    },
-    {
-      "il_ad": "Antalya",
-      "ilceler": ["Muratpaşa", "Kepez", "Konyaaltı", "Aksu", "Manavgat"]
+    "3": {
+      "city": "Bursa",
+      "districts": ["Osmangazi", "Nilüfer", "Yıldırım", "Gürsu", "İnegöl"]
     }
-  ]
+  }
 }

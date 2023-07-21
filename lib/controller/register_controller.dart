@@ -60,10 +60,9 @@ class ListGenerate {
 
     final json = jsonDecode(file);
 
-    CityAndDistrict citiesdistricts = CityAndDistrict.fromJson(json['il_ad']);
-    print(citiesdistricts.city);
+     CityAndDistrict citiesdistricts = CityAndDistrict.fromJson(json['cities']);
+    print(citiesJson); 
   }
-
   GenerateList(cityOrDistrict) {
     return List<Widget>.generate(cities.length, (index) {
       return Center(

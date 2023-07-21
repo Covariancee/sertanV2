@@ -2,11 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import 'package:sertan/pages/login_page.dart';
+import '../city_and_district_list.dart';
 import 'package:sertan/pages/terms_page.dart';
 import 'package:sertan/widgets/custom_cupertino_button.dart';
-import '../city_and_district_list.dart';
 import '../controller/register_controller.dart';
 import '../controller/validators.dart';
 import '../provider/city_and_district_provider.dart';
@@ -24,11 +23,7 @@ class RegisterPageView extends StatefulWidget {
 
 class _RegisterPageViewState extends State<RegisterPageView> {
   @override
-  void initState() {
-    ListGenerate().getCityAndDistrict(context);
-
-    super.initState();
-  }
+ 
 
   Widget build(BuildContext context) {
     final cityProvider = Provider.of<CityDistrictProvider>(context);
@@ -130,9 +125,12 @@ class _RegisterPageViewState extends State<RegisterPageView> {
                               isRegisterValid(context, cityProvider);
                             },
                             child: const Text("Register")),
+                            ElevatedButton(onPressed: () {
+                              ListGenerate().getCityAndDistrict(context);
+                            }, child: Text("data")),
                         TextButton(
                             onPressed: () {
-                              Navigator.of(context).pop(MaterialPageRoute(
+                              Navigator.of(context).push(MaterialPageRoute(
                                   builder: (context) => LoginPageView()));
                             },
                             child: const Text("Login"))

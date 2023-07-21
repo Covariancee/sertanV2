@@ -1,11 +1,22 @@
-import 'dart:convert';
-
 class CityAndDistrict {
-  final String city;
-  final String district;
+  final istanbul;
+  final ankara;
+  final izmir;
+  final bursa;
 
-  CityAndDistrict({required this.city, required this.district});
+  CityAndDistrict({this.istanbul, this.ankara, this.izmir, this.bursa});
 
-  factory CityAndDistrict.fromJson(Map<String, dynamic> json) =>
-      CityAndDistrict(city: json["il_ad"], district: json["ilceler"]);
+  CityAndDistrict.fromJson(Map<String, dynamic> json) {
+    istanbul = json['0'];
+    ankara = json['1'];
+    izmir = json['2'];
+    bursa = json['3'];
+  }
+
+  Map<String, dynamic> toJson() => {
+        '0': istanbul,
+        '1': ankara,
+        '2': izmir,
+        '3': bursa,
+      };
 }

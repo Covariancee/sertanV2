@@ -12,7 +12,7 @@ class MealDetailsScreen extends StatefulWidget {
 }
 
 class _MealDetailsScreenState extends State<MealDetailsScreen> {
-  DateTime date = DateTime.now();
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(

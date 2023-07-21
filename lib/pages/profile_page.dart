@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../city_and_district_list.dart';
 import 'package:sertan/models/user.dart';
 import 'package:sertan/pages/category_page.dart';
 import 'package:sertan/pages/login_page.dart';
