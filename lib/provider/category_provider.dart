@@ -13,7 +13,6 @@ class CategoryController with ChangeNotifier {
   void init() {
     for (Category category in availableCategories) {
       asd.add(category);
-      ;
     }
   }
 

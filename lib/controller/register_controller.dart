@@ -56,12 +56,13 @@ var maskFormatter = MaskTextInputFormatter(
 class ListGenerate {
   getCityAndDistrict(BuildContext context) async {
     final file =
-        await rootBundle.loadString("assets/city_and_district_list.json");
+        await rootBundle.loadString("assets/a.json");
 
     final json = jsonDecode(file);
+   
 
-    //  CityAndDistrict citiesdistricts = CityAndDistrict.fromJson(json['cities']);
-    print(citiesJson); 
+   
+    print(json); 
   }
   GenerateList(cityOrDistrict) {
     return List<Widget>.generate(cities.length, (index) {

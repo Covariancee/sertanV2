@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:sertan/data/data.dart';
 import '../provider/category_provider.dart';
 import '../widgets/category_card.dart';
 

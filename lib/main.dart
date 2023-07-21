@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sertan/provider/category_provider.dart';
-import 'package:sertan/pages/category_page.dart';
 import 'package:sertan/pages/login_page.dart';
 import 'package:provider/provider.dart';
 import 'package:sertan/pages/profile_page.dart';
