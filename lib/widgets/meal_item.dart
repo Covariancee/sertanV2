@@ -7,10 +7,6 @@ class MealItem extends StatelessWidget {
   final Meal meal;
   final void Function(Meal meal) onSelectMeal;
 
-  String get affordabilityText {
-    return meal.affordability.name[0].toUpperCase() +
-        meal.affordability.name.substring(1);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +61,7 @@ class MealItem extends StatelessWidget {
                           width: 15,
                         ),
                         MealTrait(
-                            icon: Icons.attach_money, label: affordabilityText),
+                            icon: Icons.attach_money, label: meal.price + "₺"),
                       ],
                     )
                   ]),
