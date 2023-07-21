@@ -60,7 +60,7 @@ class ListGenerate {
 
     final json = jsonDecode(file);
 
-     CityAndDistrict citiesdistricts = CityAndDistrict.fromJson(json['cities']);
+    //  CityAndDistrict citiesdistricts = CityAndDistrict.fromJson(json['cities']);
     print(citiesJson); 
   }
   GenerateList(cityOrDistrict) {

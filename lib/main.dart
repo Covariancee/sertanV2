@@ -7,7 +7,6 @@ import 'package:sertan/pages/profile_page.dart';
 import 'package:sertan/pages/register_page.dart';
 import 'package:sertan/provider/city_and_district_provider.dart';
 
-
 void main() {
   runApp(MultiProvider(
     providers: [
@@ -32,7 +31,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => RegisterPageView(),
         '/login-page': (context) => LoginPageView(),
-        '/profile-page':(context) => ProfilePage()
+        '/profile-page': (context) => ProfilePage()
       },
     );
   }

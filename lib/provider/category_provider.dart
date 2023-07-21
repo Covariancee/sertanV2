@@ -4,13 +4,16 @@ import '../models/category.dart';
 import '../pages/meals_screen.dart';
 
 class CategoryController with ChangeNotifier {
+  CategoryController() {
+    init();
+  }
   int itemCount = availableCategories.length;
   List<Category> asd = [];
 
-  Future<void> init() async {
+  void init() {
     for (Category category in availableCategories) {
       asd.add(category);
-      print(asd);
+      ;
     }
   }
 
