@@ -33,8 +33,6 @@ class FunctionProvider {
                     onPressed: () {
                       confirmFunc(value);
                       Navigator.of(context).pop();
-                     
-                     
                     },
                     child: const Text("Confirm"),
                   )
