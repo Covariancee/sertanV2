@@ -4,6 +4,8 @@ import 'package:provider/provider.dart';
 import '../city_and_district_list.dart';
 import 'package:sertan/pages/terms_page.dart';
 import 'package:sertan/widgets/custom_cupertino_button.dart';
+
+import '../city_and_district_list.dart';
 import '../controller/register_controller.dart';
 import '../controller/validators.dart';
 import '../provider/city_and_district_provider.dart';
@@ -21,8 +23,6 @@ class RegisterPageView extends StatefulWidget {
 
 class _RegisterPageViewState extends State<RegisterPageView> {
   @override
- 
-
   Widget build(BuildContext context) {
     final cityProvider = Provider.of<CityDistrictProvider>(context);
     bool visible = cityProvider.isCitySelected;
@@ -62,7 +62,7 @@ class _RegisterPageViewState extends State<RegisterPageView> {
                             //maskFormatters: maskFormatter,
                             validator: emailValidator,
                             inputText: "E-mail"),
-                        DefaultInput(
+                        PasswordInput(
                             controller: passwordRegisterController,
                             //maskFormatters: maskFormatter,
                             validator: passwordValidator,
@@ -95,25 +95,7 @@ class _RegisterPageViewState extends State<RegisterPageView> {
                                 onChanged: (value) {
                                   cityProvider.termsAccepted(value!);
                                 }),
-                            RichText(
-                              text: TextSpan(
-                                text: 'Accept ',
-                                style: TextStyle(fontSize: 15),
-                                children: <TextSpan>[
-                                  TextSpan(
-                                    text: 'user terms',
-                                    style: TextStyle(color: Colors.blue),
-                                    recognizer: TapGestureRecognizer()
-                                      ..onTap = () {
-                                        Navigator.of(context).push(
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    const TermsPage()));
-                                      },
-                                  ),
-                                ],
-                              ),
-                            ),
+                            const TermText(),
                           ],
                         ),
                         ElevatedButton(
@@ -123,12 +105,14 @@ class _RegisterPageViewState extends State<RegisterPageView> {
                               isRegisterValid(context, cityProvider);
                             },
                             child: const Text("Register")),
-                            ElevatedButton(onPressed: () {
+                        ElevatedButton(
+                            onPressed: () {
                               ListGenerate().getCityAndDistrict(context);
-                            }, child: Text("data")),
+                            },
+                            child: Text("data")),
                         TextButton(
                             onPressed: () {
-                              Navigator.pushNamed(context,"/login-page");
+                              Navigator.pushNamed(context, "/login-page");
                             },
                             child: const Text("Login"))
                       ]),

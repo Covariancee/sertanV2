@@ -1,13 +1,13 @@
 import 'dart:convert';
 
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
-import 'package:provider/provider.dart';
-import 'package:sertan/models/cityanddistrict.dart';
 import 'package:sertan/models/user.dart';
+
 import '../city_and_district_list.dart';
-import '../provider/city_and_district_provider.dart';
+import '../pages/terms_page.dart';
 import '../widgets/alert_dialog.dart';
 
 TextEditingController nameController = TextEditingController();
@@ -64,6 +64,7 @@ class ListGenerate {
    
     print(json); 
   }
+
   GenerateList(cityOrDistrict) {
     return List<Widget>.generate(cities.length, (index) {
       return Center(
@@ -75,5 +76,30 @@ class ListGenerate {
         ),
       );
     });
+  }
+}
+
+class TermText extends StatelessWidget {
+  const TermText({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return RichText(
+      text: TextSpan(
+        text: 'Accept ',
+        style: TextStyle(fontSize: 15),
+        children: <TextSpan>[
+          TextSpan(
+            text: 'user terms',
+            style: TextStyle(color: Colors.blue),
+            recognizer: TapGestureRecognizer()
+              ..onTap = () {
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => const TermsPage()));
+              },
+          ),
+        ],
+      ),
+    );
   }
 }

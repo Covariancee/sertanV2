@@ -38,7 +38,7 @@ class _LoginPageViewState extends State<LoginPageView> {
                           width: 250,
                           child: Image.asset("assets/vtz_logo.png")),
                       PhoneInput(controller: phoneLoginController),
-                      DefaultInput(
+                      PasswordInput(
                           controller: passwordLoginController,
                           validator: passwordValidator,
                           inputText: "Password"),

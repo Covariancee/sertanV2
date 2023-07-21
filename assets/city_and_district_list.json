@@ -1,20 +1,46 @@
 {
-  "cities": {
-    "0": {
-      "city": "İstanbul",
-      "districts": ["Beşiktaş", "Kadıköy", "Şişli", "Üsküdar", "Beyoğlu"]
-    },
-    "1": {
-      "city": "Ankara",
-      "districts": ["Çankaya", "Kızılay", "Keçiören", "Mamak", "Etimesgut"]
-    },
-    "2": {
-      "city": "İzmir",
-      "districts": ["Bornova", "Konak", "Karşıyaka", "Gaziemir", "Buca"]
-    },
-    "3": {
-      "city": "Bursa",
-      "districts": ["Osmangazi", "Nilüfer", "Yıldırım", "Gürsu", "İnegöl"]
-    }
+  "cities": [
+    "İstanbul",
+    "Ankara",
+    "İzmir",
+    "Bursa",
+    "Adana"
+  ],
+  "districts": {
+    "İstanbul": [
+      "Beşiktaş",
+      "Kadıköy",
+      "Şişli",
+      "Kartal",
+      "Sarıyer"
+    ],
+    "Ankara": [
+      "Çankaya",
+      "Keçiören",
+      "Yenimahalle",
+      "Etimesgut",
+      "Çubuk"
+    ],
+    "İzmir": [
+      "Bornova",
+      "Karşıyaka",
+      "Konak",
+      "Buca",
+      "Çeşme"
+    ],
+    "Bursa": [
+      "Osmangazi",
+      "Nilüfer",
+      "Yıldırım",
+      "Gürsu",
+      "İnegöl"
+    ],
+    "Adana": [
+      "Seyhan",
+      "Yüreğir",
+      "Çukurova",
+      "Sarıçam",
+      "Ceyhan"
+    ]
   }
 }

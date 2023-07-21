@@ -1,8 +1,4 @@
-enum Affordability {
-  affordable,
-  pricey,
-  luxurious,
-}
+
 
 class Meal {
   const Meal(
@@ -11,7 +7,7 @@ class Meal {
       required this.title,
       required this.image,
       required this.duration,
-      required this.affordability,
+      required this.price,
       required this.detail});
 
   final String id;
@@ -19,6 +15,6 @@ class Meal {
   final String title;
   final String image;
   final int duration;
-  final Affordability affordability;
+  final String price;
   final String detail;
 }
