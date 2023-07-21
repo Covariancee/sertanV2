@@ -1,0 +1,24 @@
+{
+  "iller": [
+    {
+      "il_ad": "İstanbul",
+      "ilceler": ["Beşiktaş", "Kadıköy", "Şişli", "Fatih", "Üsküdar"]
+    },
+    {
+      "il_ad": "Ankara",
+      "ilceler": ["Çankaya", "Keçiören", "Yenimahalle", "Sincan", "Gölbaşı"]
+    },
+    {
+      "il_ad": "İzmir",
+      "ilceler": ["Konak", "Karşıyaka", "Bornova", "Buca", "Gaziemir"]
+    },
+    {
+      "il_ad": "Bursa",
+      "ilceler": ["Osmangazi", "Nilüfer", "Yıldırım", "Gürsu", "Gemlik"]
+    },
+    {
+      "il_ad": "Antalya",
+      "ilceler": ["Muratpaşa", "Kepez", "Konyaaltı", "Aksu", "Manavgat"]
+    }
+  ]
+}

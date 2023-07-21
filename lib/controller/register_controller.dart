@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:provider/provider.dart';
 import 'package:sertan/models/cityanddistrict.dart';
@@ -32,7 +35,7 @@ dynamic isRegisterValid = (context, cityProvider) {
   } else if (cityProvider.isAccepted == false) {
     alertDialog(context, 'Terms error');
   } else {
-    final String routeName = '/profile-page';
+    const String routeName = '/profile-page';
 
     Navigator.pushNamed(
       context,
@@ -51,7 +54,16 @@ var maskFormatter = MaskTextInputFormatter(
     type: MaskAutoCompletionType.lazy);
 
 class ListGenerate {
-  // ignore: non_constant_identifier_names
+  getCityAndDistrict(BuildContext context) async {
+    final file =
+        await rootBundle.loadString("assets/city_and_district_list.json");
+
+    final json = jsonDecode(file);
+
+    CityAndDistrict citiesdistricts = CityAndDistrict.fromJson(json['il_ad']);
+    print(citiesdistricts.city);
+  }
+
   GenerateList(cityOrDistrict) {
     return List<Widget>.generate(cities.length, (index) {
       return Center(
