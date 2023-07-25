@@ -4,6 +4,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+import 'package:sertan/models/cityanddistrict.dart';
 import 'package:sertan/models/user.dart';
 
 import '../city_and_district_list.dart';
@@ -55,14 +56,11 @@ var maskFormatter = MaskTextInputFormatter(
 
 class ListGenerate {
   getCityAndDistrict(BuildContext context) async {
-    final file =
-        await rootBundle.loadString("assets/a.json");
+    final file = await rootBundle.loadString("assets/a.json");
 
     final json = jsonDecode(file);
-   
 
-   
-    print(json); 
+    print(city);
   }
 
   GenerateList(cityOrDistrict) {

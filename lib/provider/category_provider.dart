@@ -8,11 +8,11 @@ class CategoryController with ChangeNotifier {
     init();
   }
   int itemCount = availableCategories.length;
-  List<Category> asd = [];
+  List<Category> categoryList = [];
 
   void init() {
     for (Category category in availableCategories) {
-      asd.add(category);
+      categoryList.add(category);
     }
   }
 

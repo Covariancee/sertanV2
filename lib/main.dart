@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
-=======
 import 'package:provider/provider.dart';
 import 'package:sertan/pages/category_page.dart';
->>>>>>> 84346f0d2b98cede56b4709f52b5223fef39cfb1
 import 'package:sertan/pages/login_page.dart';
 import 'package:sertan/pages/profile_page.dart';
 import 'package:sertan/pages/register_page.dart';
