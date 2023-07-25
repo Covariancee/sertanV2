@@ -38,10 +38,10 @@ Widget _buildBody(
         itemCount: categoryProvider.itemCount,
         itemBuilder: (BuildContext context, int index) {
           return CategoryCard(
-            category: categoryProvider.asd[index],
+            category: categoryProvider.categoryList[index],
             onSelectCategory: () {
               categoryProvider.selectCategory(
-                  context, categoryProvider.asd[index]);
+                  context, categoryProvider.categoryList[index]);
             },
           );
         },

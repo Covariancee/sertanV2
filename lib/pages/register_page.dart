@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import '../city_and_district_list.dart';
-import 'package:sertan/pages/terms_page.dart';
 import 'package:sertan/widgets/custom_cupertino_button.dart';
 
 import '../city_and_district_list.dart';
@@ -27,31 +26,26 @@ class RegisterPageView extends StatefulWidget {
 class _RegisterPageViewState extends State<RegisterPageView> {
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) {
-        // var model = CategoryController();
-        // model.init();
-        return CityDistrictProvider();
-      },
-      child: Consumer<CityDistrictProvider>(builder: _buildBody),
+    final cityProvider = Provider.of<CityDistrictProvider>(context);
+
+    return SafeArea(
+      child: Scaffold(
+        body: _buildBody(context, cityProvider),
+      ),
     );
   }
-}
 
-Widget _buildBody(
-    BuildContext context, CityDistrictProvider value, Widget? child) {
-  final cityProvider = Provider.of<CityDistrictProvider>(context);
-  bool visible = cityProvider.isCitySelected;
-  return SafeArea(
-    child: Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: Container(
-        height: double.infinity,
-        decoration: const BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage("assets/vtz_background.png"),
-                fit: BoxFit.cover)),
-        child: SingleChildScrollView(
+  _buildBody(BuildContext context, CityDistrictProvider cityProvider) {
+    bool visible = cityProvider.isCitySelected;
+    return Container(
+      height: double.infinity,
+      decoration: const BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage("assets/vtz_background.png"),
+              fit: BoxFit.cover)),
+      child: SingleChildScrollView(
+        physics: const AlwaysScrollableScrollPhysics(),
+        child: SizedBox(
           child: Form(
             key: cityProvider.formKey,
             child: Padding(
@@ -122,9 +116,9 @@ Widget _buildBody(
                       
                             final file = await rootBundle
                                 .loadString("assets/products.json");
-  
+    
                             final json = jsonDecode(file);
-  
+    
                             print(json);
                           },
                         
@@ -141,6 +135,6 @@ Widget _buildBody(
           ),
         ),
       ),
-    ),
-  );
-}
+    );
+  
+  }}
