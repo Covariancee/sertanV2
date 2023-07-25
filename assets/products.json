@@ -1,0 +1,39 @@
+{
+  "cities": [
+    {
+      "id": 1,
+      "city": "İstanbul",
+      "districts": [
+        "Kadıköy",
+        "Beşiktaş",
+        "Maslak",
+        "Sarıyer",
+        "Beykoz",
+        "Fatih",
+        "Pendik"
+      ]
+    },
+    {
+      "id": 2,
+      "city": "Ankara",
+      "districts": [
+        "Yenimahalle",
+        "Çankaya",
+        "Keçiören",
+        "Gölbaşı",
+        "Çubuk",
+        "Ayaş"
+      ]
+    },
+    {
+      "id": 3,
+      "city": "İzmir",
+      "districts": ["Konak", "Çeşme", "Bornova", "Kemalpaşa", "Buca", "Ödemiş"]
+    },
+    {
+      "id": 4,
+      "city": "Bursa",
+      "districts": ["Konak", "Çeşme", "Bornova", "Kemalpaşa", "Buca", "Ödemiş"]
+    }
+  ]
+}
