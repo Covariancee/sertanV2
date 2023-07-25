@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:provider/provider.dart';
+import 'package:sertan/provider/city_and_district_provider.dart';
 import '../controller/function_controller.dart';
-import '../controller/register_controller.dart';
+
 class CustomCupertinoButton extends StatelessWidget {
   const CustomCupertinoButton({super.key ,required this.selectedAny, required this.generateListVar,required this.setSelectedAny});
     final String selectedAny;
@@ -10,6 +12,7 @@ class CustomCupertinoButton extends StatelessWidget {
     final  generateListVar;
   @override
   Widget build(BuildContext context) {
+    final cityProvider = Provider.of<CityDistrictProvider>(context);
     return CupertinoButton(
       padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
       color: Colors.black12,
@@ -26,7 +29,7 @@ class CustomCupertinoButton extends StatelessWidget {
       onPressed: () => FunctionProvider(
         context: context,
         pickerText:
-            ListGenerate().GenerateList(generateListVar),
+            cityProvider.GenerateList(generateListVar),
         confirmFunc: setSelectedAny,
       ).showPicker(),
     );

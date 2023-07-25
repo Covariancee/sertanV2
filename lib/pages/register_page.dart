@@ -1,12 +1,18 @@
+import 'dart:convert';
+
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import '../city_and_district_list.dart';
 import 'package:sertan/widgets/custom_cupertino_button.dart';
 
-import '../controller/register_controller.dart';
+import '../city_and_district_list.dart';
+
 import '../controller/validators.dart';
 import '../provider/city_and_district_provider.dart';
 import '../widgets/text_input.dart';
+import '../widgets/text_span.dart';
 
 class RegisterPageView extends StatefulWidget {
   RegisterPageView({
@@ -15,7 +21,6 @@ class RegisterPageView extends StatefulWidget {
 
   @override
   State<RegisterPageView> createState() => _RegisterPageViewState();
-  final _formKey = GlobalKey<FormState>();
 }
 
 class _RegisterPageViewState extends State<RegisterPageView> {
@@ -42,31 +47,31 @@ class _RegisterPageViewState extends State<RegisterPageView> {
         physics: const AlwaysScrollableScrollPhysics(),
         child: SizedBox(
           child: Form(
-            key: widget._formKey,
+            key: cityProvider.formKey,
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 32),
-              child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
+              child: Stack(
+                children: [
+                  Column(mainAxisAlignment: MainAxisAlignment.center, children: [
                     SizedBox(
                         width: 200, child: Image.asset("assets/vtz_logo.png")),
                     DefaultInput(
-                        controller: nameController,
+                        controller: cityProvider.nameController,
                         validator: nameSurnameValidator,
                         inputText: "Name"),
                     DefaultInput(
-                        controller: surnameController,
+                        controller: cityProvider.surnameController,
                         validator: nameSurnameValidator,
                         inputText: "Surname"),
-                    PhoneInput(controller: phoneRegisterController),
+                    PhoneInput(controller: cityProvider.phoneRegisterController),
                     DefaultInput(
-                        controller: emailController,
+                        controller: cityProvider.emailController,
                         keyboardType: TextInputType.emailAddress,
                         //maskFormatters: maskFormatter,
                         validator: emailValidator,
                         inputText: "E-mail"),
                     PasswordInput(
-                        controller: passwordRegisterController,
+                        controller: cityProvider.passwordRegisterController,
                         //maskFormatters: maskFormatter,
                         validator: passwordValidator,
                         inputText: "Password"),
@@ -83,8 +88,7 @@ class _RegisterPageViewState extends State<RegisterPageView> {
                         visible: visible,
                         child: CustomCupertinoButton(
                             selectedAny: cityProvider.selectedDistrict,
-                            generateListVar:
-                                districts[cityProvider.selectedCity],
+                            generateListVar: districts[cityProvider.selectedCity],
                             setSelectedAny: (value) => cityProvider
                                     .setSelectedDistrict =
                                 districts[cityProvider.selectedCity]![value])),
@@ -102,14 +106,22 @@ class _RegisterPageViewState extends State<RegisterPageView> {
                     ),
                     ElevatedButton(
                         onPressed: () {
-                          isCurrentStateValid(widget._formKey, cityProvider);
-                          isRegisterValid(context, cityProvider);
+                          cityProvider.isCurrentStateValid(
+                              cityProvider.formKey, cityProvider);
+                          cityProvider.isRegisterValid(context, cityProvider);
                         },
                         child: const Text("Register")),
                     ElevatedButton(
-                        onPressed: () {
-                          ListGenerate().getCityAndDistrict(context);
-                        },
+                        onPressed: () async{
+                      
+                            final file = await rootBundle
+                                .loadString("assets/products.json");
+    
+                            final json = jsonDecode(file);
+    
+                            print(json);
+                          },
+                        
                         child: Text("data")),
                     TextButton(
                         onPressed: () {
@@ -117,10 +129,12 @@ class _RegisterPageViewState extends State<RegisterPageView> {
                         },
                         child: const Text("Login"))
                   ]),
+                ],
+              ),
             ),
           ),
         ),
       ),
     );
-  }
-}
+  
+  }}

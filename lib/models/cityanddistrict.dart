@@ -1,4 +1,3 @@
-
 import 'package:sertan/city_and_district_list.dart';
 
 class CityModel {
