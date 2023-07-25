@@ -1,65 +1,71 @@
 import 'package:flutter/material.dart';
-import '../models/meals.dart';
-import '../widgets/meal_item.dart';
-import 'meals_detail_screen.dart';
+import 'package:provider/provider.dart';
+import 'package:sertan/provider/meal_screen_provider.dart';
+import 'package:sertan/models/meals.dart';
+import 'package:sertan/widgets/meal_item.dart';
 
-class MealsScreen extends StatelessWidget {
+class MealsScreen extends StatefulWidget {
   const MealsScreen({
     required this.meals,
     this.title,
     super.key,
   });
 
+  //
   final String? title;
   final List<Meal> meals;
 
-  void selectMeal(BuildContext context, Meal meal) {
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (ctx) => MealDetailsScreen(meal: meal),
+  @override
+  State<MealsScreen> createState() => _MealsScreenState();
+}
+
+class _MealsScreenState extends State<MealsScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return ChangeNotifierProvider(
+      create: (context) {
+        return MealsController();
+      },
+      child: Consumer<MealsController>(
+        builder: _buildBody,
       ),
     );
   }
 
-  @override
-  Widget build(BuildContext context) {
-    Widget content = Center(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Text('Boş',
-              style: Theme.of(context)
-                  .textTheme
-                  .headlineLarge!
-                  .copyWith(color: Theme.of(context).colorScheme.secondary)),
-          const SizedBox(
-            height: 15,
-          ),
-          Text('Try a different category',
-              style: Theme.of(context)
-                  .textTheme
-                  .bodyLarge!
-                  .copyWith(color: Theme.of(context).colorScheme.secondary))
-        ],
+  Widget _buildBody(
+      BuildContext context, MealsController controller, Widget? child) {
+    return Scaffold(
+      body: SafeArea(
+        child: _mealsList(context, controller),
       ),
     );
+  }
 
-    if (meals.isNotEmpty) {
-      content = ListView.builder(
-          itemCount: meals.length,
+  _mealsList(BuildContext context, MealsController controller) {
+    final mealController = Provider.of<MealsController>(context);
+    return Container(
+      child: ListView.builder(
+          itemCount: mealController.mealsList.length,
           itemBuilder: (context, index) => MealItem(
-                meal: meals[index],
+                meal: mealController.mealsList[index],
                 onSelectMeal: (meal) {
-                  selectMeal(context, meal);
+                  mealController.selectedMeal(
+                      context, mealController.mealsList[index]);
                 },
-              ));
-    }
-    if (title == null) {
-      return content;
-    }
-    return Scaffold(
-      appBar: AppBar(title: Text(title!)),
-      body: content,
+              )),
+
+      // TODO: aşağıyı controllerdan aldıgın mealslara göre düzenle
+      //   return Container(
+      // child: ListView.builder(
+      // itemCount: controller.mealsList.length,
+      //   itemBuilder: (context, index) =>
+      //       MealItem(
+      //         meal: mealsList[index],
+      //         onSelectMeal: (meal) {
+      //           selectMeal(context, meal);
+      //         },
+      //       ),
+      // ),);
     );
   }
 }
