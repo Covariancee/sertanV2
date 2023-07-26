@@ -24,8 +24,7 @@ class _CategoryPageViewState extends State<CategoryPageView> {
 }
 
 Widget _buildBody(
-    BuildContext context, CategoryController value, Widget? child) {
-  final categoryProvider = Provider.of<CategoryController>(context);
+    BuildContext context, CategoryController provider, Widget? child) {
   return Scaffold(
     body: SafeArea(
       child: GridView.builder(
@@ -35,13 +34,12 @@ Widget _buildBody(
             childAspectRatio: 1,
             crossAxisSpacing: 20,
             mainAxisSpacing: 20),
-        itemCount: categoryProvider.itemCount,
+        itemCount: provider.itemCount,
         itemBuilder: (BuildContext context, int index) {
           return CategoryCard(
-            category: categoryProvider.categoryList[index],
+            category: provider.categoryList[index],
             onSelectCategory: () {
-              categoryProvider.selectCategory(
-                  context, categoryProvider.categoryList[index]);
+              provider.selectCategory(context, provider.categoryList[index]);
             },
           );
         },
