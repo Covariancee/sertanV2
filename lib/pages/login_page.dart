@@ -10,7 +10,7 @@ class LoginPageView extends StatefulWidget {
 
   @override
   State<LoginPageView> createState() => _LoginPageViewState();
-  final _formKey = GlobalKey<FormState>();
+  final _formKey2 = GlobalKey<FormState>();
 }
 
 class _LoginPageViewState extends State<LoginPageView> {
@@ -28,7 +28,7 @@ class _LoginPageViewState extends State<LoginPageView> {
           children: [
             SingleChildScrollView(
               child: Form(
-                key: widget._formKey,
+                key: widget._formKey2,
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 35),
                   child: Column(
@@ -47,7 +47,7 @@ class _LoginPageViewState extends State<LoginPageView> {
                         width: 145,
                         child: ElevatedButton(
                             onPressed: () {
-                              loginController(context, widget._formKey);
+                              loginController(context, widget._formKey2);
                             },
                             child: const Text("Login")),
                       ),

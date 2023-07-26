@@ -1,16 +1,19 @@
-import 'package:sertan/city_and_district_list.dart';
+import 'dart:convert';
 
-class CityModel {
-  String? city;
-
-  CityModel({
-    this.city,
+class Cities {
+  Cities({
+    required this.id,
+    required this.city,
+    required this.districts,
   });
-  CityModel.fromJson(Map<String, dynamic> cities) {
-    city = cities['cities'];
+    int id;
+    String city;
+    List<String> districts;
+
+ factory Cities.fromJson(Map<String, dynamic> data) {
+    final id = data["id"] as int;
+    final city = data["city"] as String;
+    final districts = (data["districts"] as List).map((e) => e.toString()).toList();
+    return Cities(id: id, city: city, districts: districts);
   }
-
-  Map<String, dynamic> toJson() => {"cities": city};
 }
-
-var city = CityModel.fromJson(citiesJson);

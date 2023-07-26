@@ -1,10 +1,26 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import '../city_and_district_list.dart';
+import '../models/cityanddistrict.dart';
 import '../models/user.dart';
 import '../widgets/alert_dialog.dart';
 
 class CityDistrictProvider with ChangeNotifier {
+ List<Cities> cityDataList = [];
+  CityDistrictProvider(){
+    init();
+  }
+  void init() async{
+     String file = await rootBundle.loadString("assets/products.json");
+    List<dynamic> jsonData = jsonDecode(file);
+    cityDataList = jsonData.map((data) => Cities.fromJson(data as Map<String, dynamic>)).toList();
+
+    
+  }
+
   TextEditingController nameController = TextEditingController();
   TextEditingController surnameController = TextEditingController();
   TextEditingController phoneRegisterController = TextEditingController();
@@ -54,11 +70,14 @@ class CityDistrictProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  GenerateList(cityOrDistrict) {
-    return List<Widget>.generate(cities.length, (index) {
+  // ignore: non_constant_identifier_names
+  GenerateList(cityOrDistrict) async {
+  
+
+    return List<Widget>.generate(cityDataList.length, (index) {
       return Center(
         child: Text(
-          cityOrDistrict[index],
+          cityDataList[index].city,
 
           //districts[cityProvider.selectedCity]![index],
           style: const TextStyle(fontSize: 20),
@@ -90,7 +109,9 @@ class CityDistrictProvider with ChangeNotifier {
             nameSurname: "${nameController.text} ${surnameController.text}",
             phoneNumber: phoneRegisterController.text,
             emailAddress: emailController.text,
-            password: passwordRegisterController.text, city: selectedCity, distrtict: selectedDistrict),
+            password: passwordRegisterController.text,
+            city: selectedCity,
+            distrtict: selectedDistrict),
       );
     }
   }
